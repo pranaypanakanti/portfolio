@@ -161,25 +161,6 @@
             </div>
         </section>
         
-        <!-- AI-Powered Summary Section --><section id="ai-summary" class="py-20">
-            <h2 class="section-heading text-4xl font-bold text-white mb-12">AI-Powered Summary</h2>
-             <div class="card p-8">
-                <p class="text-slate-300 mb-4">This is an interactive demo using the Gemini API. Click a button to rewrite my "About Me" summary in a different tone.</p>
-                <div class="flex flex-wrap gap-4 my-4">
-                    <button onclick="generateSummary('concise for a recruiter')" class="btn-secondary font-bold py-2 px-4 rounded-lg">For Recruiters</button>
-                    <button onclick="generateSummary('simple, conversational terms')" class="btn-secondary font-bold py-2 px-4 rounded-lg">Simple Terms</button>
-                    <button onclick="generateSummary('as a social media post')" class="btn-secondary font-bold py-2 px-4 rounded-lg">As a Tweet</button>
-                </div>
-                <div id="summary-loading" class="hidden text-slate-400 my-4">
-                    <i class="fas fa-spinner fa-spin mr-2"></i> Generating summary...
-                </div>
-                 <div id="summary-error" class="hidden text-red-400 my-4"></div>
-                <div id="summary-output" class="p-4 bg-slate-900 rounded-lg min-h-[120px] text-slate-300 transition-all">
-                    Click a button to see the result here.
-                </div>
-            </div>
-        </section>
-
         <!-- Skills & Technologies Section --><section id="skills" class="py-20">
             <h2 class="section-heading text-4xl font-bold text-white mb-12">Skills & Technologies</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -383,68 +364,7 @@
                 spotlight.style.top = `${e.clientY}px`;
             });
         }
-
-        // --- Gemini API Integration ---
-        const apiKey = ""; // Per instructions, leave empty.
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-
-        const summaryLoading = document.getElementById('summary-loading');
-        const summaryOutput = document.getElementById('summary-output');
-        const summaryError = document.getElementById('summary-error');
-
-        async function generateSummary(tone) {
-            if (!summaryLoading || !summaryOutput || !summaryError) return;
-
-            summaryLoading.classList.remove('hidden');
-            summaryOutput.textContent = '';
-            summaryError.classList.add('hidden');
-            
-            const originalText = document.getElementById('about-me-text')?.innerText;
-
-            if (!originalText) {
-                summaryError.textContent = 'Error: Could not find the original text to summarize.';
-                summaryError.classList.remove('hidden');
-                summaryLoading.classList.add('hidden');
-                return;
-            }
-
-            const prompt = `Based on the following professional "About Me" text, please rewrite it in a ${tone} tone. Keep it professional and engaging.\n\nOriginal Text: "${originalText}"`;
-
-            try {
-                const payload = {
-                    contents: [{ parts: [{ text: prompt }] }],
-                };
-
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) {
-                    throw new Error(`API request failed with status ${response.status}`);
-                }
-
-                const result = await response.json();
-                const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
-
-                if (text) {
-                    summaryOutput.textContent = text;
-                } else {
-                    throw new Error('No content received from API.');
-                }
-
-            } catch (error) {
-                console.error("Gemini API Error:", error);
-                summaryError.textContent = 'An error occurred while generating the summary. Please check the console for details.';
-                summaryError.classList.remove('hidden');
-            } finally {
-                summaryLoading.classList.add('hidden');
-            }
-        }
     </script>
 </body>
 </html>
-
-
 
