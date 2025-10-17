@@ -60,6 +60,14 @@
         .btn-primary:hover {
             background-color: #2563eb; /* Blue 600 */
         }
+        .btn-secondary {
+            background-color: #334155; /* Slate 700 */
+            color: #cbd5e1; /* Slate 300 */
+            transition: background-color 0.3s ease;
+        }
+        .btn-secondary:hover {
+             background-color: #475569; /* Slate 600 */
+        }
         .nav-link {
             transition: color 0.3s ease;
         }
@@ -89,8 +97,7 @@
 
     <div id="cursor-spotlight"></div>
 
-    <!-- Header & Navigation -->
-    <header class="bg-slate-900/80 backdrop-blur-sm fixed w-full top-0 z-50 border-b border-slate-700">
+    <!-- Header & Navigation --><header class="bg-slate-900/80 backdrop-blur-sm fixed w-full top-0 z-50 border-b border-slate-700">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold text-white tracking-wider">Pranay</a>
             <nav class="hidden md:flex space-x-8 text-slate-300">
@@ -104,8 +111,7 @@
                 <i class="fas fa-bars fa-lg"></i>
             </button>
         </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-slate-900">
+        <!-- Mobile Menu --><div id="mobile-menu" class="hidden md:hidden bg-slate-900">
             <a href="#about" class="block py-2 px-6 text-white hover:bg-slate-800">About</a>
             <a href="#skills" class="block py-2 px-6 text-white hover:bg-slate-800">Skills</a>
             <a href="#projects" class="block py-2 px-6 text-white hover:bg-slate-800">Projects</a>
@@ -116,26 +122,32 @@
 
     <main class="container mx-auto px-6">
         <!-- Hero Section -->
-        <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center">
-            <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-3">Pranay Panakanti</h1>
-            <h2 class="text-2xl md:text-3xl text-slate-300 font-medium mb-1">Software Engineer</h2>
-            <p class="text-lg text-slate-400 mb-6">Specializing in Backend Development</p>
-            <div class="flex items-center text-slate-400 mb-8">
-                <i class="fas fa-map-marker-alt mr-2"></i>
-                <span>Hyderabad, India</span>
+        <section id="home" class="min-h-screen flex flex-col md:flex-row justify-center items-center text-center md:text-left md:gap-x-16 lg:gap-x-24">
+            <!-- Profile Picture -->
+            <div class="mb-8 md:mb-0 flex-shrink-0">
+                <img src="https://i.postimg.cc/C5h5S59r/Generated-Image-October-17-2025-8-19-PM.png" alt="Pranay Panakanti" class="w-64 h-64 md:w-80 md:h-80 rounded-full border-4 border-slate-700 object-cover mx-auto">
             </div>
-            <div class="flex justify-center space-x-4 mb-8">
-                <a href="https://github.com/pranaypanakanti" target="_blank" class="icon-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/pranay-panakanti/" target="_blank" class="icon-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://leetcode.com/u/pranaypanakanti/" target="_blank" class="icon-link" aria-label="LeetCode"><i class="fas fa-terminal"></i></a>
+            <!-- Text Content -->
+            <div class="flex flex-col justify-center items-center md:items-start">
+                <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-3">Pranay Panakanti</h1>
+                <h2 class="text-2xl md:text-3xl text-slate-300 font-medium mb-1">Software Engineer</h2>
+                <p class="text-lg text-slate-400 mb-6">Specializing in Backend Development</p>
+                <div class="flex items-center text-slate-400 mb-8 justify-center md:justify-start">
+                    <i class="fas fa-map-marker-alt mr-2"></i>
+                    <span>Hyderabad, India</span>
+                </div>
+                <div class="flex justify-center md:justify-start space-x-4 mb-8">
+                    <a href="https://github.com/pranaypanakanti" target="_blank" class="icon-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/pranay-panakanti/" target="_blank" class="icon-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://leetcode.com/u/pranaypanakanti/" target="_blank" class="icon-link" aria-label="LeetCode"><i class="fas fa-terminal"></i></a>
+                    <a href="mailto:panakantipranay@gmail.com" target="_blank" rel="noopener noreferrer" class="icon-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
             </div>
-            <a href="#contact" class="btn-primary font-bold py-3 px-8 rounded-lg text-lg">Get In Touch</a>
         </section>
 
-        <!-- About Me Section -->
-        <section id="about" class="py-20">
+        <!-- About Me Section --><section id="about" class="py-20">
             <h2 class="section-heading text-4xl font-bold text-white mb-12">About Me</h2>
-            <p class="text-lg text-slate-300 leading-relaxed max-w-4xl mb-10">
+            <p id="about-me-text" class="text-lg text-slate-300 leading-relaxed max-w-4xl mb-10">
                 Highly motivated Computer Science student specializing in backend development with Java and Spring Boot. Proven ability to design, develop, and deploy RESTful APIs for critical business applications. Proficient in data structures, algorithms, multithreading, and object-oriented programming. Eager to leverage skills in building scalable, high-performance software systems.
             </p>
             <div class="card p-8">
@@ -148,9 +160,27 @@
                 </div>
             </div>
         </section>
+        
+        <!-- AI-Powered Summary Section --><section id="ai-summary" class="py-20">
+            <h2 class="section-heading text-4xl font-bold text-white mb-12">AI-Powered Summary</h2>
+             <div class="card p-8">
+                <p class="text-slate-300 mb-4">This is an interactive demo using the Gemini API. Click a button to rewrite my "About Me" summary in a different tone.</p>
+                <div class="flex flex-wrap gap-4 my-4">
+                    <button onclick="generateSummary('concise for a recruiter')" class="btn-secondary font-bold py-2 px-4 rounded-lg">For Recruiters</button>
+                    <button onclick="generateSummary('simple, conversational terms')" class="btn-secondary font-bold py-2 px-4 rounded-lg">Simple Terms</button>
+                    <button onclick="generateSummary('as a social media post')" class="btn-secondary font-bold py-2 px-4 rounded-lg">As a Tweet</button>
+                </div>
+                <div id="summary-loading" class="hidden text-slate-400 my-4">
+                    <i class="fas fa-spinner fa-spin mr-2"></i> Generating summary...
+                </div>
+                 <div id="summary-error" class="hidden text-red-400 my-4"></div>
+                <div id="summary-output" class="p-4 bg-slate-900 rounded-lg min-h-[120px] text-slate-300 transition-all">
+                    Click a button to see the result here.
+                </div>
+            </div>
+        </section>
 
-        <!-- Skills & Technologies Section -->
-        <section id="skills" class="py-20">
+        <!-- Skills & Technologies Section --><section id="skills" class="py-20">
             <h2 class="section-heading text-4xl font-bold text-white mb-12">Skills & Technologies</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="card p-6">
@@ -174,8 +204,7 @@
             </div>
         </section>
 
-        <!-- Featured Projects Section -->
-        <section id="projects" class="py-20">
+        <!-- Featured Projects Section --><section id="projects" class="py-20">
             <h2 class="section-heading text-4xl font-bold text-white mb-12">Featured Projects</h2>
             <div class="space-y-12">
                 <div class="card p-8">
@@ -207,8 +236,7 @@
             </div>
         </section>
         
-        <!-- Experience Section -->
-        <section id="experience" class="py-20">
+        <!-- Experience Section --><section id="experience" class="py-20">
             <h2 class="section-heading text-4xl font-bold text-white mb-12">Experience</h2>
             <div class="space-y-12">
                 <div class="card p-8">
@@ -245,8 +273,7 @@
             </div>
         </section>
 
-        <!-- Certifications & Achievements Section -->
-        <section id="certifications" class="py-20">
+        <!-- Certifications & Achievements Section --><section id="certifications" class="py-20">
             <h2 class="section-heading text-4xl font-bold text-white mb-12">Certifications & Achievements</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="card p-6">
@@ -275,8 +302,7 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="py-20 text-center">
+        <!-- Contact Section --><section id="contact" class="py-20 text-center">
             <h2 class="section-heading text-4xl font-bold text-white mb-4 inline-block">Get In Touch</h2>
             <p class="text-lg text-slate-400 max-w-2xl mx-auto mb-12">I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
             
@@ -289,8 +315,7 @@
 
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-slate-900 border-t border-slate-700">
+    <!-- Footer --><footer class="bg-slate-900 border-t border-slate-700">
         <div class="container mx-auto px-6 py-12">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
                 <div>
@@ -326,41 +351,100 @@
 
 
     <script>
-        // Mobile menu toggle
+        // --- Mobile menu toggle ---
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
-        const mobileMenuLinks = mobileMenu.getElementsByTagName('a');
+        if (mobileMenuButton && mobileMenu) {
+            const mobileMenuLinks = mobileMenu.getElementsByTagName('a');
 
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
 
-        // Close mobile menu when a link is clicked
-        for (let link of mobileMenuLinks) {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+            for (let link of mobileMenuLinks) {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            }
+             document.addEventListener('click', function(event) {
+                const isClickInsideMenu = mobileMenu.contains(event.target);
+                const isClickOnButton = mobileMenuButton.contains(event.target);
+                if (!isClickInsideMenu && !isClickOnButton) {
+                    mobileMenu.classList.add('hidden');
+                }
             });
         }
 
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const isClickInsideMenu = mobileMenu.contains(event.target);
-            const isClickOnButton = mobileMenuButton.contains(event.target);
-            if (!isClickInsideMenu && !isClickOnButton) {
-                mobileMenu.classList.add('hidden');
-            }
-        });
-
-        // Cursor spotlight effect
+        // --- Cursor spotlight effect ---
         const spotlight = document.getElementById('cursor-spotlight');
-        document.addEventListener('mousemove', (e) => {
-            spotlight.style.left = `${e.clientX}px`;
-            spotlight.style.top = `${e.clientY}px`;
-        });
+        if (spotlight) {
+            document.addEventListener('mousemove', (e) => {
+                spotlight.style.left = `${e.clientX}px`;
+                spotlight.style.top = `${e.clientY}px`;
+            });
+        }
+
+        // --- Gemini API Integration ---
+        const apiKey = ""; // Per instructions, leave empty.
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+
+        const summaryLoading = document.getElementById('summary-loading');
+        const summaryOutput = document.getElementById('summary-output');
+        const summaryError = document.getElementById('summary-error');
+
+        async function generateSummary(tone) {
+            if (!summaryLoading || !summaryOutput || !summaryError) return;
+
+            summaryLoading.classList.remove('hidden');
+            summaryOutput.textContent = '';
+            summaryError.classList.add('hidden');
+            
+            const originalText = document.getElementById('about-me-text')?.innerText;
+
+            if (!originalText) {
+                summaryError.textContent = 'Error: Could not find the original text to summarize.';
+                summaryError.classList.remove('hidden');
+                summaryLoading.classList.add('hidden');
+                return;
+            }
+
+            const prompt = `Based on the following professional "About Me" text, please rewrite it in a ${tone} tone. Keep it professional and engaging.\n\nOriginal Text: "${originalText}"`;
+
+            try {
+                const payload = {
+                    contents: [{ parts: [{ text: prompt }] }],
+                };
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API request failed with status ${response.status}`);
+                }
+
+                const result = await response.json();
+                const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                if (text) {
+                    summaryOutput.textContent = text;
+                } else {
+                    throw new Error('No content received from API.');
+                }
+
+            } catch (error) {
+                console.error("Gemini API Error:", error);
+                summaryError.textContent = 'An error occurred while generating the summary. Please check the console for details.';
+                summaryError.classList.remove('hidden');
+            } finally {
+                summaryLoading.classList.add('hidden');
+            }
+        }
     </script>
 </body>
 </html>
-
 
 
 
