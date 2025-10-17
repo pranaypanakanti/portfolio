@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pranay Panakanti - Software Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #cbd5e1; /* Slate 300 */
+            background-color: #0f172a; /* Slate 900 */
+        }
+        #cursor-spotlight {
+            position: fixed;
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.3), transparent 60%);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out;
+            z-index: 0;
+        }
+        .section-heading::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background-color: #3b82f6; /* Blue 500 */
+            margin-top: 1rem;
+        }
+        .card {
+            background-color: #1e293b; /* Slate 800 */
+            border: 1px solid #334155; /* Slate 700 */
+            border-radius: 0.75rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.1), 0 4px 6px -2px rgba(59, 130, 246, 0.05);
+        }
+        .tag {
+            background-color: #334155; /* Slate 700 */
+            color: #94a3b8; /* Slate 400 */
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        .btn-primary {
+            background-color: #3b82f6; /* Blue 500 */
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #2563eb; /* Blue 600 */
+        }
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #3b82f6;
+        }
+        .icon-link {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            color: #94a3b8;
+            width: 40px;
+            height: 40px;
+            border-radius: 0.5rem;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            transition: color 0.3s, background-color 0.3s, border-color 0.3s;
+        }
+        .icon-link:hover {
+            background-color: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div id="cursor-spotlight"></div>
+
+    <!-- Header & Navigation -->
+    <header class="bg-slate-900/80 backdrop-blur-sm fixed w-full top-0 z-50 border-b border-slate-700">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white tracking-wider">Pranay</a>
+            <nav class="hidden md:flex space-x-8 text-slate-300">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900">
+            <a href="#about" class="block py-2 px-6 text-white hover:bg-slate-800">About</a>
+            <a href="#skills" class="block py-2 px-6 text-white hover:bg-slate-800">Skills</a>
+            <a href="#projects" class="block py-2 px-6 text-white hover:bg-slate-800">Projects</a>
+            <a href="#experience" class="block py-2 px-6 text-white hover:bg-slate-800">Experience</a>
+            <a href="#contact" class="block py-2 px-6 text-white hover:bg-slate-800">Contact</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6">
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center">
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-3">Pranay Panakanti</h1>
+            <h2 class="text-2xl md:text-3xl text-slate-300 font-medium mb-1">Software Engineer</h2>
+            <p class="text-lg text-slate-400 mb-6">Specializing in Backend Development</p>
+            <div class="flex items-center text-slate-400 mb-8">
+                <i class="fas fa-map-marker-alt mr-2"></i>
+                <span>Hyderabad, India</span>
+            </div>
+            <div class="flex justify-center space-x-4 mb-8">
+                <a href="https://github.com/pranaypanakanti" target="_blank" class="icon-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/pranay-panakanti/" target="_blank" class="icon-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://leetcode.com/u/pranaypanakanti/" target="_blank" class="icon-link" aria-label="LeetCode"><i class="fas fa-terminal"></i></a>
+            </div>
+            <a href="#contact" class="btn-primary font-bold py-3 px-8 rounded-lg text-lg">Get In Touch</a>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="py-20">
+            <h2 class="section-heading text-4xl font-bold text-white mb-12">About Me</h2>
+            <p class="text-lg text-slate-300 leading-relaxed max-w-4xl mb-10">
+                Highly motivated Computer Science student specializing in backend development with Java and Spring Boot. Proven ability to design, develop, and deploy RESTful APIs for critical business applications. Proficient in data structures, algorithms, multithreading, and object-oriented programming. Eager to leverage skills in building scalable, high-performance software systems.
+            </p>
+            <div class="card p-8">
+                <h3 class="text-2xl font-bold text-white mb-4">Education</h3>
+                <h4 class="text-xl font-semibold text-slate-100">Bachelor of Technology in Computer Science Engineering</h4>
+                <p class="text-slate-400 mb-2">GITAM University, Visakhapatnam, AP</p>
+                <div class="flex justify-between text-slate-400">
+                    <span>GPA: 8.84</span>
+                    <span>Aug 2023 - May 2027</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills & Technologies Section -->
+        <section id="skills" class="py-20">
+            <h2 class="section-heading text-4xl font-bold text-white mb-12">Skills & Technologies</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold text-white mb-4 flex items-center"><i class="fas fa-code mr-3 text-blue-400"></i>Languages</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag">Java</span><span class="tag">Python</span><span class="tag">C</span><span class="tag">JavaScript</span><span class="tag">SQL</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">React</span>
+                    </div>
+                </div>
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold text-white mb-4 flex items-center"><i class="fas fa-cogs mr-3 text-blue-400"></i>Technologies & Frameworks</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag">Spring Boot</span><span class="tag">RESTful APIs</span><span class="tag">FastAPI</span><span class="tag">MySQL</span><span class="tag">Docker</span><span class="tag">Git/GitHub</span><span class="tag">Unix/Linux</span>
+                    </div>
+                </div>
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold text-white mb-4 flex items-center"><i class="fas fa-brain mr-3 text-blue-400"></i>Core Competencies</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag">Data Structures & Algorithms</span><span class="tag">Object-Oriented Programming</span><span class="tag">Multithreading & Concurrency</span><span class="tag">Database Management</span><span class="tag">System Architecture</span><span class="tag">API Design</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects Section -->
+        <section id="projects" class="py-20">
+            <h2 class="section-heading text-4xl font-bold text-white mb-12">Featured Projects</h2>
+            <div class="space-y-12">
+                <div class="card p-8">
+                    <h3 class="text-2xl font-bold text-white mb-2">E-Commerce Platform</h3>
+                    <p class="text-slate-400 mb-4">A comprehensive e-commerce backend system with advanced features for product management and secure authentication.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">MySQL</span><span class="tag">JWT</span>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2 text-slate-300 mb-6">
+                        <li>Developed comprehensive back-end services using Spring Boot and MySQL to manage product catalogs, user profiles, and order processing.</li>
+                        <li>Designed a scalable database schema and system architecture engineered to accommodate up to 1,000 concurrent users.</li>
+                        <li>Implemented authentication using JSON Web Tokens (JWT) to safeguard user sessions and critical data.</li>
+                    </ul>
+                    <a href="https://github.com/pranaypanakanti/E-Commerce_Platform" target="_blank" class="font-semibold text-blue-400 hover:text-blue-300 transition-colors">View on GitHub <i class="fas fa-external-link-alt ml-1 text-sm"></i></a>
+                </div>
+                <div class="card p-8">
+                    <h3 class="text-2xl font-bold text-white mb-2">AI-Powered Crop Yield Prediction</h3>
+                    <p class="text-slate-400 mb-4">An intelligent agricultural platform providing AI-driven crop predictions and profitability recommendations.</p>
+                     <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="tag">Spring Boot</span><span class="tag">FastAPI</span><span class="tag">MySQL</span><span class="tag">ML</span><span class="tag">React</span>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2 text-slate-300 mb-6">
+                        <li>Engineered the backend infrastructure using Java and Spring Boot within a 6-member agile team, developing RESTful APIs to process geospatial inputs and serve real-time, AI-driven crop predictions to the React frontend.</li>
+                        <li>Orchestrated the critical integration between the Java backend and a Python FastAPI ML service, enabling the platform to serve two core AI-driven features: single-crop yield prediction and multi-crop profitability recommendations.</li>
+                        <li>Designed and implemented a scalable MySQL database schema to power the recommendation engine, returning over 15 data points per user query (yield, price, and profit across 5+ recommended crops).</li>
+                    </ul>
+                    <a href="https://github.com/pranaypanakanti/Al-Powered-Crop-Yield-Prediction-and-Optimization" target="_blank" class="font-semibold text-blue-400 hover:text-blue-300 transition-colors">View on GitHub <i class="fas fa-external-link-alt ml-1 text-sm"></i></a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Experience Section -->
+        <section id="experience" class="py-20">
+            <h2 class="section-heading text-4xl font-bold text-white mb-12">Experience</h2>
+            <div class="space-y-12">
+                <div class="card p-8">
+                    <div class="flex items-start">
+                        <div class="mr-4 flex-shrink-0"><i class="fas fa-briefcase text-3xl text-blue-400"></i></div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Full Stack Developer Intern</h3>
+                            <p class="font-semibold text-slate-300 mb-1">CodeBeat</p>
+                            <p class="text-slate-400 text-sm">May 2024 – June 2024 • Visakhapatnam, AP</p>
+                        </div>
+                    </div>
+                    <ul class="list-disc list-inside space-y-2 text-slate-300 mt-4 pl-4">
+                        <li>Engineered and deployed over 5 production-ready RESTful APIs for critical business modules, including user authentication and order processing, utilizing Java and Spring Boot.</li>
+                        <li>Constructed responsive front-end components using HTML, CSS, and JavaScript, contributing to an improved and seamless user experience.</li>
+                        <li>Engaged in the full software development lifecycle (SDLC), managing feature branches with Git and conducting code reviews to ensure high-quality, maintainable code.</li>
+                    </ul>
+                </div>
+                <div class="card p-8">
+                     <div class="flex items-start">
+                        <div class="mr-4 flex-shrink-0"><i class="fas fa-users text-3xl text-blue-400"></i></div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Programming Team Member</h3>
+                            <p class="font-semibold text-slate-300 mb-1">GITAM Aero Astro Club</p>
+                            <p class="text-slate-400 text-sm">Aug 2024 — Present • Visakhapatnam, AP</p>
+                        </div>
+                    </div>
+                     <ul class="list-disc list-inside space-y-2 text-slate-300 mt-4 pl-4">
+                        <li>Collaborating with a multidisciplinary team to develop software solutions supporting aerospace and robotics research.</li>
+                        <li>Designing and implementing automation and simulation tools using Java and Python.</li>
+                        <li>Integrating backend systems with hardware interfaces and optimising code for performance and reliability.</li>
+                        <li>Contributing to internal projects focused on control systems, telemetry, and data processing for UAV prototypes.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications & Achievements Section -->
+        <section id="certifications" class="py-20">
+            <h2 class="section-heading text-4xl font-bold text-white mb-12">Certifications & Achievements</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold text-white mb-2">Cisco Networking Basics</h3>
+                    <p class="text-sm text-slate-400 mb-4">Cisco Networking Academy</p>
+                    <p class="text-slate-300 mb-4">Completed foundational networking course, gaining proficiency in network protocols, TCP/IP, and LAN/WAN concepts.</p>
+                    <a href="https://www.credly.com/badges/afac9fb8-43f9-49a0-9a79-bfbd4508d714/linked_in_profile" target="_blank" class="font-semibold text-blue-400 hover:text-blue-300 transition-colors text-sm">View Credential <i class="fas fa-external-link-alt ml-1"></i></a>
+                </div>
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold text-white mb-2">Google Gen AI Study Jam</h3>
+                    <p class="text-sm text-slate-400 mb-4">Google</p>
+                    <p class="text-slate-300 mb-4">Gained hands-on experience with large language models (LLMs) and prompt engineering through a Google-sponsored campaign.</p>
+                    <a href="https://www.credly.com/badges/1a4e9e64-fba7-46eb-a366-95644a8d5727/linked_in_profile" target="_blank" class="font-semibold text-blue-400 hover:text-blue-300 transition-colors text-sm">View Credential <i class="fas fa-external-link-alt ml-1"></i></a>
+                </div>
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold text-white mb-2">Deloitte Australia - Technology Job Simulation</h3>
+                    <p class="text-sm text-slate-400 mb-4">Deloitte Australia</p>
+                    <p class="text-slate-300 mb-4">Completed technology job simulation program focusing on real-world technology consulting scenarios and solutions.</p>
+                    <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/9PBTqmSxAf6zZTseP/udmxiyHeqYQLkTPvf_9PBTqmSxAf6zZTseP_5C7JWbZthsfvQgoft_17520070362336_completion_certificate.pdf" target="_blank" class="font-semibold text-blue-400 hover:text-blue-300 transition-colors text-sm">View Credential <i class="fas fa-external-link-alt ml-1"></i></a>
+                </div>
+                <div class="card p-6">
+                    <h3 class="text-xl font-bold text-white mb-2">OCI AI Foundations</h3>
+                    <p class="text-sm text-slate-400 mb-4">Oracle</p>
+                    <p class="text-slate-300">Gained foundational knowledge in Oracle Cloud Infrastructure AI services and artificial intelligence principles.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 text-center">
+            <h2 class="section-heading text-4xl font-bold text-white mb-4 inline-block">Get In Touch</h2>
+            <p class="text-lg text-slate-400 max-w-2xl mx-auto mb-12">I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+            
+            <a href="mailto:panakantipranay@gmail.com" target="_blank" rel="noopener noreferrer" class="btn-primary font-bold py-3 px-8 rounded-lg text-lg inline-block">
+                <i class="fas fa-envelope mr-2"></i> Send Mail
+            </a>
+            
+            <p class="text-slate-400 mt-8">Or reach me directly at <a href="mailto:panakantipranay@gmail.com" class="text-blue-400 hover:underline">panakantipranay@gmail.com</a></p>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-700">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-2">Pranay</h3>
+                    <p class="text-slate-400">Software Engineer specializing in building scalable, high-performance systems.</p>
+                </div>
+                 <div>
+                    <h3 class="text-xl font-bold text-white mb-2">Quick Links</h3>
+                    <ul class="space-y-2 text-slate-400">
+                        <li><a href="#about" class="hover:text-blue-400 transition-colors">About</a></li>
+                        <li><a href="#skills" class="hover:text-blue-400 transition-colors">Skills</a></li>
+                        <li><a href="#projects" class="hover:text-blue-400 transition-colors">Projects</a></li>
+                        <li><a href="#experience" class="hover:text-blue-400 transition-colors">Experience</a></li>
+                        <li><a href="#contact" class="hover:text-blue-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                     <h3 class="text-xl font-bold text-white mb-2">Connect</h3>
+                     <div class="flex justify-center md:justify-start space-x-4">
+                        <a href="https://github.com/pranaypanakanti" target="_blank" class="icon-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/pranay-panakanti/" target="_blank" class="icon-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://leetcode.com/u/pranaypanakanti/" target="_blank" class="icon-link" aria-label="LeetCode"><i class="fas fa-terminal"></i></a>
+                        <a href="mailto:panakantipranay@gmail.com" target="_blank" rel="noopener noreferrer" class="icon-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-slate-700 pt-8 text-center text-slate-500">
+                <p>&copy; 2025 Pranay Panakanti. All rights reserved.</p>
+                <p class="text-sm">Built with <i class="fas fa-heart text-red-500"></i> using React & Spring Boot</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuLinks = mobileMenu.getElementsByTagName('a');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        for (let link of mobileMenuLinks) {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const isClickInsideMenu = mobileMenu.contains(event.target);
+            const isClickOnButton = mobileMenuButton.contains(event.target);
+            if (!isClickInsideMenu && !isClickOnButton) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+        // Cursor spotlight effect
+        const spotlight = document.getElementById('cursor-spotlight');
+        document.addEventListener('mousemove', (e) => {
+            spotlight.style.left = `${e.clientX}px`;
+            spotlight.style.top = `${e.clientY}px`;
+        });
+    </script>
+</body>
+</html>
+
+
+
+
