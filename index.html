@@ -960,7 +960,7 @@
                 
                 // Create mailto link
                 const subject = `Portfolio Contact from ${name}`;
-                const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+                const body = `Name: ${name}\nEmail: ${email}\nMessage: ${message}\n`;
                 const mailtoLink = `mailto:panakantipranay@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
                 
                 // Open email client
