@@ -1,1026 +1,1167 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pranay Panakanti | Software Engineer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #3b82f6;
-            --primary-dark: #2563eb;
-            --secondary: #8b5cf6;
-            --dark: #0f172a;
-            --dark-light: #1e293b;
-            --darker: #0a0f1f;
-            --text: #e2e8f0;
-            --text-light: #94a3b8;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text);
-            background-color: var(--darker);
-            overflow-x: hidden;
-            min-height: 100vh;
-        }
-        
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(ellipse at top, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at bottom, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-                linear-gradient(to bottom, var(--darker) 0%, var(--dark) 100%);
-            z-index: -1;
-            pointer-events: none;
-        }
-        
-        .text-gradient {
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .bg-gradient {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-        }
-        
-        .section-heading {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 3rem;
-        }
-        
-        .section-heading::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -12px;
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 2px;
-        }
-        
-        .card {
-            background: rgba(30, 41, 59, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            transition: all 0.3s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border-color: rgba(59, 130, 246, 0.3);
-        }
-        
-        .skill-bar {
-            height: 8px;
-            background: rgba(30, 41, 59, 0.8);
-            border-radius: 4px;
-            overflow: hidden;
-            margin-top: 8px;
-        }
-        
-        .skill-progress {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 4px;
-            transition: width 1.5s ease;
-            width: 0;
-        }
-        
-        .tag {
-            display: inline-block;
-            background: rgba(59, 130, 246, 0.1);
-            color: #60a5fa;
-            padding: 0.35rem 0.85rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            margin: 0.25rem;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-        }
-        
-        .btn-primary {
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            color: white;
-            font-weight: 600;
-            padding: 0.75rem 2rem;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border: none;
-            cursor: pointer;
-            text-decoration: none;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.4);
-        }
-        
-        .icon-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
-            background: rgba(30, 41, 59, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            color: var(--text-light);
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-        
-        .icon-link:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
-        }
-        
-        .nav-link {
-            position: relative;
-            color: var(--text-light);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-link:hover {
-            color: white;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        .timeline-item {
-            position: relative;
-            padding-left: 30px;
-            margin-bottom: 2rem;
-        }
-        
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 8px;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--primary);
-        }
-        
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            left: 5px;
-            top: 20px;
-            width: 2px;
-            height: calc(100% + 20px);
-            background: rgba(59, 130, 246, 0.3);
-        }
-        
-        .timeline-item:last-child::after {
-            display: none;
-        }
-        
-        input, textarea {
-            background: rgba(30, 41, 59, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 0.75rem 1rem;
-            color: var(--text);
-            font-family: 'Inter', sans-serif;
-            width: 100%;
-        }
-        
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--text-light);
-            font-weight: 500;
-        }
-        
-        .header-blur {
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .floating {
-            animation: floating 3s ease-in-out infinite;
-        }
-        
-        @keyframes floating {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        @media (max-width: 768px) {
-            .section-heading::after {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pranay Panakanti — Backend Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #080c10;
+  --bg2: #0d1117;
+  --surface: #111820;
+  --surface2: #161e28;
+  --border: #1e2a38;
+  --border2: #243040;
+  --accent: #00d4ff;
+  --accent2: #00ff94;
+  --accent3: #ff6b35;
+  --text: #e8edf2;
+  --text2: #8899aa;
+  --text3: #4a5a6a;
+  --font-display: 'Syne', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* Custom cursor */
+.cursor {
+  position: fixed;
+  width: 8px; height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s ease;
+  mix-blend-mode: difference;
+}
+.cursor-ring {
+  position: fixed;
+  width: 32px; height: 32px;
+  border: 1px solid rgba(0, 212, 255, 0.4);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transition: transform 0.15s ease, width 0.2s ease, height 0.2s ease;
+}
+
+/* Noise overlay */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0; opacity: 0.6;
+}
+
+/* Grid background */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: 
+    linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none; z-index: 0;
+}
+
+/* Nav */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.5rem 3rem;
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(8, 12, 16, 0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(30,42,56,0.5);
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.1rem; font-weight: 800;
+  color: var(--text); text-decoration: none;
+  letter-spacing: -0.02em;
+}
+.nav-logo span { color: var(--accent); }
+
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size: 0.75rem; color: var(--text2);
+  text-decoration: none; letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+  position: relative;
+}
+.nav-links a::before {
+  content: attr(data-num);
+  color: var(--accent); margin-right: 6px;
+  font-size: 0.65rem;
+}
+.nav-links a:hover { color: var(--text); }
+
+.nav-cta {
+  font-family: var(--font-mono);
+  font-size: 0.75rem; letter-spacing: 0.05em;
+  padding: 0.6rem 1.4rem;
+  border: 1px solid var(--accent);
+  color: var(--accent); text-decoration: none;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+.nav-cta:hover { background: var(--accent); color: var(--bg); }
+
+/* Hero */
+#home {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  justify-content: center; padding: 8rem 3rem 4rem;
+  position: relative; z-index: 1;
+  max-width: 1200px; margin: 0 auto;
+}
+
+.hero-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem; color: var(--accent);
+  letter-spacing: 0.15em; text-transform: uppercase;
+  display: flex; align-items: center; gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.hero-label::before {
+  content: ''; width: 40px; height: 1px;
+  background: var(--accent);
+}
+
+.hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  font-weight: 800; line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.hero-name .line2 {
+  -webkit-text-stroke: 1px var(--text3);
+  color: transparent;
+  display: block;
+}
+
+.hero-tagline {
+  font-family: var(--font-mono);
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  color: var(--text2);
+  margin: 2rem 0 3rem;
+  max-width: 560px;
+  line-height: 1.7;
+}
+
+.hero-tagline .hl { color: var(--accent2); }
+
+.hero-stats {
+  display: flex; gap: 3rem; margin-bottom: 3rem;
+}
+.stat-item { }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 2rem; font-weight: 800;
+  color: var(--text); line-height: 1;
+}
+.stat-num span { color: var(--accent); }
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem; color: var(--text3);
+  text-transform: uppercase; letter-spacing: 0.1em;
+  margin-top: 4px;
+}
+
+.hero-actions { display: flex; gap: 1rem; align-items: center; }
+
+.btn-outline {
+  font-family: var(--font-mono);
+  font-size: 0.75rem; letter-spacing: 0.08em;
+  padding: 0.9rem 2rem;
+  border: 1px solid var(--border2);
+  color: var(--text2); text-decoration: none;
+  transition: all 0.2s; text-transform: uppercase;
+}
+.btn-outline:hover { border-color: var(--text2); color: var(--text); }
+
+.btn-filled {
+  font-family: var(--font-mono);
+  font-size: 0.75rem; letter-spacing: 0.08em;
+  padding: 0.9rem 2rem;
+  background: var(--accent); color: var(--bg);
+  text-decoration: none; transition: all 0.2s;
+  text-transform: uppercase; font-weight: 500;
+}
+.btn-filled:hover { background: var(--accent2); }
+
+.hero-socials {
+  position: fixed; left: 2rem; bottom: 3rem;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 1rem; z-index: 10;
+}
+.hero-socials a {
+  font-family: var(--font-mono);
+  font-size: 0.65rem; color: var(--text3);
+  text-decoration: none; writing-mode: vertical-rl;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  transition: color 0.2s;
+}
+.hero-socials a:hover { color: var(--accent); }
+.hero-socials::after {
+  content: ''; width: 1px; height: 60px;
+  background: var(--border2);
+}
+
+/* Sections common */
+section { position: relative; z-index: 1; }
+.section-wrap { max-width: 1200px; margin: 0 auto; padding: 6rem 3rem; }
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem; color: var(--accent);
+  letter-spacing: 0.15em; text-transform: uppercase;
+  display: flex; align-items: center; gap: 1rem;
+  margin-bottom: 1rem;
+}
+.section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 800; line-height: 1.05;
+  letter-spacing: -0.03em; margin-bottom: 3rem;
+}
+
+/* About */
+#about { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 5rem; align-items: start;
+}
+
+.about-text p {
+  font-size: 1rem; color: var(--text2);
+  line-height: 1.8; margin-bottom: 1.5rem;
+}
+.about-text p strong { color: var(--text); font-weight: 500; }
+
+.about-facts {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: var(--border);
+  border: 1px solid var(--border); margin-top: 2.5rem;
+}
+.fact-item {
+  background: var(--bg2);
+  padding: 1.25rem 1.5rem;
+}
+.fact-key {
+  font-family: var(--font-mono);
+  font-size: 0.62rem; color: var(--text3);
+  text-transform: uppercase; letter-spacing: 0.1em;
+  margin-bottom: 4px;
+}
+.fact-val {
+  font-size: 0.9rem; color: var(--text);
+  font-weight: 500;
+}
+
+.about-skills-list { }
+.skill-group { margin-bottom: 2rem; }
+.skill-group-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem; color: var(--accent2);
+  text-transform: uppercase; letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+.skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.skill-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem; color: var(--text2);
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--border2);
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.skill-tag:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Experience */
+#experience { }
+
+.exp-grid { display: grid; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+
+.exp-item {
+  background: var(--bg);
+  padding: 2.5rem;
+  display: grid; grid-template-columns: 200px 1fr;
+  gap: 2rem;
+  transition: background 0.2s;
+}
+.exp-item:hover { background: var(--surface); }
+
+.exp-meta { }
+.exp-period {
+  font-family: var(--font-mono);
+  font-size: 0.68rem; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+.exp-company {
+  font-size: 0.85rem; color: var(--text2);
+  margin-bottom: 0.25rem;
+}
+.exp-location {
+  font-family: var(--font-mono);
+  font-size: 0.65rem; color: var(--text3);
+}
+
+.exp-content { }
+.exp-role {
+  font-family: var(--font-display);
+  font-size: 1.3rem; font-weight: 700;
+  color: var(--text); margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+.exp-bullets { list-style: none; }
+.exp-bullets li {
+  font-size: 0.88rem; color: var(--text2);
+  line-height: 1.7; margin-bottom: 0.6rem;
+  padding-left: 1.2rem; position: relative;
+}
+.exp-bullets li::before {
+  content: '→'; position: absolute; left: 0;
+  color: var(--accent3); font-size: 0.75rem;
+  top: 3px;
+}
+
+/* Projects */
+#projects { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+.projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+
+.project-card {
+  background: var(--bg2);
+  padding: 2.5rem;
+  transition: background 0.2s;
+  position: relative; overflow: hidden;
+}
+.project-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.project-card:hover { background: var(--surface); }
+.project-card:hover::before { transform: scaleX(1); }
+
+.project-card.featured { grid-column: span 2; }
+
+.project-header {
+  display: flex; justify-content: space-between;
+  align-items: flex-start; margin-bottom: 1rem;
+}
+.project-badge {
+  font-family: var(--font-mono);
+  font-size: 0.6rem; color: var(--accent2);
+  border: 1px solid rgba(0,255,148,0.3);
+  padding: 0.25rem 0.6rem;
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+.project-badge.live { color: var(--accent2); border-color: rgba(0,255,148,0.3); }
+.project-badge.hackathon { color: var(--accent3); border-color: rgba(255,107,53,0.3); }
+.project-badge.wip { color: var(--accent); border-color: rgba(0,212,255,0.3); }
+
+.project-num {
+  font-family: var(--font-mono);
+  font-size: 0.65rem; color: var(--text3);
+}
+
+.project-name {
+  font-family: var(--font-display);
+  font-size: 1.6rem; font-weight: 800;
+  color: var(--text); margin-bottom: 0.75rem;
+  letter-spacing: -0.03em;
+}
+
+.project-desc {
+  font-size: 0.88rem; color: var(--text2);
+  line-height: 1.7; margin-bottom: 1.5rem;
+}
+
+.project-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
+.stack-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem; color: var(--text3);
+  background: var(--surface);
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--border);
+}
+
+.project-links { display: flex; gap: 1.5rem; }
+.project-link {
+  font-family: var(--font-mono);
+  font-size: 0.68rem; color: var(--text2);
+  text-decoration: none; letter-spacing: 0.05em;
+  text-transform: uppercase;
+  display: flex; align-items: center; gap: 0.4rem;
+  transition: color 0.2s;
+}
+.project-link:hover { color: var(--accent); }
+.project-link svg { width: 12px; height: 12px; }
+
+/* Achievements */
+#achievements { }
+
+.ach-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); }
+
+.ach-card {
+  background: var(--bg);
+  padding: 2rem;
+  transition: background 0.2s;
+}
+.ach-card:hover { background: var(--surface); }
+
+.ach-icon {
+  font-size: 1.5rem; margin-bottom: 1rem;
+}
+.ach-title {
+  font-family: var(--font-display);
+  font-size: 1rem; font-weight: 700;
+  color: var(--text); margin-bottom: 0.4rem;
+  letter-spacing: -0.01em;
+}
+.ach-org {
+  font-family: var(--font-mono);
+  font-size: 0.65rem; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+.ach-desc {
+  font-size: 0.82rem; color: var(--text2);
+  line-height: 1.6;
+}
+
+/* Certifications */
+#certifications { background: var(--bg2); border-top: 1px solid var(--border); }
+
+.cert-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+
+.cert-item {
+  background: var(--bg2);
+  padding: 1.5rem 2rem;
+  display: flex; align-items: center;
+  gap: 1.5rem; transition: background 0.2s;
+}
+.cert-item:hover { background: var(--surface); }
+
+.cert-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent); flex-shrink: 0;
+}
+.cert-dot.inprogress { background: var(--accent3); }
+
+.cert-name {
+  font-size: 0.88rem; color: var(--text);
+  font-weight: 500; margin-bottom: 2px;
+}
+.cert-issuer {
+  font-family: var(--font-mono);
+  font-size: 0.62rem; color: var(--text3);
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+.cert-date {
+  font-family: var(--font-mono);
+  font-size: 0.65rem; color: var(--text2);
+  margin-left: auto; white-space: nowrap;
+}
+
+/* Contact */
+#contact { border-top: 1px solid var(--border); }
+
+.contact-inner {
+  max-width: 1200px; margin: 0 auto; padding: 6rem 3rem;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 5rem; align-items: start;
+}
+
+.contact-left .big-text {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 800; line-height: 0.95;
+  letter-spacing: -0.04em; margin-bottom: 2rem;
+}
+.contact-left .big-text .outline {
+  -webkit-text-stroke: 1px var(--text3); color: transparent;
+}
+
+.contact-left p {
+  font-size: 0.9rem; color: var(--text2); line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.contact-info { }
+.contact-row {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.contact-row:first-child { border-top: 1px solid var(--border); }
+.contact-row-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem; color: var(--text3);
+  text-transform: uppercase; letter-spacing: 0.1em;
+  width: 80px; flex-shrink: 0;
+}
+.contact-row a, .contact-row span {
+  font-size: 0.88rem; color: var(--text);
+  text-decoration: none; transition: color 0.2s;
+}
+.contact-row a:hover { color: var(--accent); }
+
+.socials-row { display: flex; gap: 1rem; margin-top: 2rem; }
+.social-link {
+  font-family: var(--font-mono);
+  font-size: 0.68rem; color: var(--text2);
+  text-decoration: none; letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid var(--border2);
+  transition: all 0.2s;
+}
+.social-link:hover { border-color: var(--accent); color: var(--accent); }
+
+/* Footer */
+footer {
+  position: relative; z-index: 1;
+  border-top: 1px solid var(--border);
+  padding: 2rem 3rem;
+  display: flex; justify-content: space-between; align-items: center;
+  max-width: 100%;
+}
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 0.9rem; font-weight: 700;
+  color: var(--text3);
+}
+.footer-logo span { color: var(--accent); }
+.footer-copy {
+  font-family: var(--font-mono);
+  font-size: 0.62rem; color: var(--text3);
+  letter-spacing: 0.08em;
+}
+
+/* Scroll indicator */
+.scroll-line {
+  position: fixed; right: 2.5rem; top: 50%;
+  transform: translateY(-50%);
+  display: flex; flex-direction: column;
+  align-items: center; gap: 8px; z-index: 10;
+}
+.scroll-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--border2); transition: background 0.3s;
+  cursor: pointer;
+}
+.scroll-dot.active { background: var(--accent); }
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* Mobile */
+@media (max-width: 768px) {
+  nav { padding: 1.25rem 1.5rem; }
+  .nav-links, .nav-cta { display: none; }
+  #home { padding: 6rem 1.5rem 3rem; }
+  .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+  .hero-socials { display: none; }
+  .scroll-line { display: none; }
+  .section-wrap { padding: 4rem 1.5rem; }
+  .about-grid, .exp-item, .projects-grid, .ach-grid, .cert-list, .contact-inner { grid-template-columns: 1fr; }
+  .project-card.featured { grid-column: span 1; }
+  .exp-item { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 1rem; padding: 2rem 1.5rem; text-align: center; }
+}
+
+/* Glitch effect on name hover */
+.hero-name:hover .line1 {
+  animation: glitch 0.3s ease;
+}
+@keyframes glitch {
+  0%, 100% { text-shadow: none; }
+  25% { text-shadow: 2px 0 var(--accent), -2px 0 var(--accent2); }
+  50% { text-shadow: -2px 0 var(--accent3), 2px 0 var(--accent); }
+  75% { text-shadow: 2px 2px var(--accent2), -2px -2px var(--accent3); }
+}
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <header class="header-blur fixed w-full top-0 z-50">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-white tracking-wider">Pranay<span class="text-gradient">.</span></a>
-            
-            <nav class="hidden md:flex space-x-8">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#experience" class="nav-link">Experience</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </nav>
-            
-            <div class="flex items-center space-x-4">
-                <a href="#contact" class="btn-primary hidden md:block">Get In Touch</a>
-                <button id="mobile-menu-button" class="md:hidden text-white">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
-            </div>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden hidden bg-gray-900 border-t border-gray-800">
-            <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
-                <a href="#home" class="text-white py-2">Home</a>
-                <a href="#about" class="text-gray-300 py-2">About</a>
-                <a href="#skills" class="text-gray-300 py-2">Skills</a>
-                <a href="#experience" class="text-gray-300 py-2">Experience</a>
-                <a href="#projects" class="text-gray-300 py-2">Projects</a>
-                <a href="#contact" class="text-gray-300 py-2">Contact</a>
-                <a href="#contact" class="btn-primary w-full text-center mt-2">Get In Touch</a>
-            </div>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="min-h-screen pt-20 flex flex-col md:flex-row items-center justify-center container mx-auto px-6">
-        <div class="flex-1 text-center md:text-left">
-            <div class="inline-block px-4 py-2 rounded-full bg-blue-900/30 border border-blue-800/30 text-blue-300 text-sm font-medium mb-6">
-                <i class="fas fa-code mr-2"></i>Software Engineer | Strong Backend Focus
-            </div>
-            
-            <h1 class="text-5xl md:text-7xl font-bold text-white mb-4">Pranay <span class="text-gradient">Panakanti</span></h1>
-            
-            <p class="text-xl text-gray-300 mb-8 max-w-2xl">
-                Computer Science undergraduate with strong software engineering foundation and <span class="text-blue-300 font-medium">specialization in backend development</span>. Experienced in building production-grade systems with focus on <span class="text-blue-300 font-medium">Java, Spring Boot, and modern database technologies</span>.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 mb-10">
-                <a href="#contact" class="btn-primary">
-                    <i class="fas fa-paper-plane mr-2"></i>Contact Me
-                </a>
-                <a href="https://drive.google.com/file/d/1lRFd75Ei5lSnFoNsG2fSl1GJHLASQveU/view?usp=sharing" target="_blank" class="px-6 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white font-medium hover:bg-gray-700 transition-colors flex items-center justify-center">
-                    <i class="fas fa-file-alt mr-2"></i>View Resume
-                </a>
-            </div>
-            
-            <div class="flex space-x-4 justify-center md:justify-start">
-                <a href="https://www.linkedin.com/in/pranay-panakanti/" target="_blank" class="icon-link" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="https://github.com/pranaypanakanti" target="_blank" class="icon-link" aria-label="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://leetcode.com/u/pranaypanakanti/" target="_blank" class="icon-link" aria-label="LeetCode">
-                    <i class="fas fa-terminal"></i>
-                </a>
-                <a href="mailto:panakantipranay@gmail.com" class="icon-link" aria-label="Email">
-                    <i class="fas fa-envelope"></i>
-                </a>
-            </div>
-        </div>
-        
-        <div class="flex-1 flex justify-center mt-12 md:mt-0">
-            <div class="relative">
-                <div class="absolute -inset-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur-xl opacity-30"></div>
-                <img src="https://i.postimg.cc/C5h5S59r/Generated-Image-October-17-2025-8-19-PM.png" 
-                     alt="Pranay Panakanti" 
-                     class="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-gray-800">
-                <div class="absolute -bottom-2 -right-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white p-3 rounded-full">
-                    <i class="fas fa-laptop-code text-xl"></i>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 container mx-auto px-6">
-        <h2 class="section-heading text-4xl font-bold text-white">About Me</h2>
-        
-        <div class="grid md:grid-cols-2 gap-12">
-            <div>
-                <p class="text-lg text-gray-300 mb-6">
-                    I'm a Computer Science undergraduate at GITAM University with a comprehensive software engineering background and strong backend development expertise. I excel at designing, building, and deploying scalable systems that solve real-world problems.
-                </p>
-                
-                <p class="text-lg text-gray-300 mb-8">
-                    With hands-on experience in the full software development lifecycle, I bring expertise in system architecture, API design, database optimization, and cloud technologies. I'm passionate about creating efficient, maintainable code and solving complex technical challenges.
-                </p>
-                
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="card p-4">
-                        <div class="flex items-center mb-2">
-                            <div class="w-10 h-10 rounded-lg bg-blue-900/30 flex items-center justify-center mr-3">
-                                <i class="fas fa-graduation-cap text-blue-400"></i>
-                            </div>
-                            <h3 class="font-bold text-white">Education</h3>
-                        </div>
-                        <p class="text-gray-300 text-sm">B.Tech in CSE at GITAM University</p>
-                        <p class="text-blue-300 text-sm font-medium">GPA: 8.84</p>
-                    </div>
-                    
-                    <div class="card p-4">
-                        <div class="flex items-center mb-2">
-                            <div class="w-10 h-10 rounded-lg bg-purple-900/30 flex items-center justify-center mr-3">
-                                <i class="fas fa-code-branch text-purple-400"></i>
-                            </div>
-                            <h3 class="font-bold text-white">Focus Areas</h3>
-                        </div>
-                        <p class="text-gray-300 text-sm">Backend Development</p>
-                        <p class="text-purple-300 text-sm font-medium">Java, Spring Boot, System Design</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div>
-                <div class="card p-8 mb-8">
-                    <h3 class="text-2xl font-bold text-white mb-6">Technical Strengths</h3>
-                    
-                    <div class="space-y-6">
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-white font-medium">Backend Development</span>
-                                <span class="text-blue-300 font-medium">90%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="90%"></div>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-white font-medium">System Architecture</span>
-                                <span class="text-blue-300 font-medium">85%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="85%"></div>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-white font-medium">API Design & Integration</span>
-                                <span class="text-blue-300 font-medium">88%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="88%"></div>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-white font-medium">Problem Solving</span>
-                                <span class="text-blue-300 font-medium">92%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="92%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Nav -->
+<nav>
+  <a href="#home" class="nav-logo">PP<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about" data-num="01">About</a></li>
+    <li><a href="#experience" data-num="02">Experience</a></li>
+    <li><a href="#projects" data-num="03">Projects</a></li>
+    <li><a href="#achievements" data-num="04">Achievements</a></li>
+    <li><a href="#contact" data-num="05">Contact</a></li>
+  </ul>
+  <a href="https://drive.google.com/file/d/1lRFd75Ei5lSnFoNsG2fSl1GJHLASQveU/view?usp=sharing" target="_blank" class="nav-cta">Resume ↗</a>
+</nav>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-gray-900/50">
-        <div class="container mx-auto px-6">
-            <h2 class="section-heading text-4xl font-bold text-white">Technical Skills</h2>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Languages -->
-                <div class="card p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-blue-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-code text-blue-400 text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">Languages</h3>
-                    </div>
-                    <div class="flex flex-wrap">
-                        <span class="tag">Java</span>
-                        <span class="tag">Python</span>
-                        <span class="tag">C++</span>
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">SQL</span>
-                    </div>
-                </div>
-                
-                <!-- Backend & Frameworks -->
-                <div class="card p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-green-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-server text-green-400 text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">Backend & Frameworks</h3>
-                    </div>
-                    <div class="flex flex-wrap">
-                        <span class="tag">Spring Boot</span>
-                        <span class="tag">RESTful APIs</span>
-                        <span class="tag">JWT</span>
-                        <span class="tag">JUnit</span>
-                        <span class="tag">Docker</span>
-                        <span class="tag">Git/GitHub</span>
-                        <span class="tag">Linux</span>
-                        <span class="tag">FastAPI</span>
-                    </div>
-                </div>
-                
-                <!-- Databases -->
-                <div class="card p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-purple-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-database text-purple-400 text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">Databases</h3>
-                    </div>
-                    <div class="flex flex-wrap">
-                        <span class="tag">PostgreSQL</span>
-                        <span class="tag">MySQL</span>
-                        <span class="tag">MongoDB</span>
-                        <span class="tag">Supabase</span>
-                    </div>
-                </div>
-                
-                <!-- Core Concepts -->
-                <div class="card p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-yellow-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-cogs text-yellow-400 text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">Core Concepts</h3>
-                    </div>
-                    <div class="flex flex-wrap">
-                        <span class="tag">Data Structures & Algorithms</span>
-                        <span class="tag">Object-Oriented Programming</span>
-                        <span class="tag">Concurrency</span>
-                        <span class="tag">System Design</span>
-                        <span class="tag">API Security</span>
-                        <span class="tag">Design Patterns</span>
-                    </div>
-                </div>
-                
-                <!-- Applied AI -->
-                <div class="card p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-pink-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-robot text-pink-400 text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">Applied AI</h3>
-                    </div>
-                    <div class="flex flex-wrap">
-                        <span class="tag">ML Model Integration</span>
-                        <span class="tag">LLM APIs</span>
-                        <span class="tag">Scikit-learn</span>
-                        <span class="tag">FastAPI</span>
-                    </div>
-                </div>
-                
-                <!-- Cloud & Tools -->
-                <div class="card p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-lg bg-red-900/30 flex items-center justify-center mr-4">
-                            <i class="fas fa-cloud text-red-400 text-xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-white">Cloud & Tools</h3>
-                    </div>
-                    <div class="flex flex-wrap">
-                        <span class="tag">AWS</span>
-                        <span class="tag">Docker</span>
-                        <span class="tag">Git</span>
-                        <span class="tag">Postman</span>
-                        <span class="tag">Linux</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Hero Socials (fixed left) -->
+<div class="hero-socials">
+  <a href="https://linkedin.com/in/pranay-panakanti" target="_blank">LinkedIn</a>
+  <a href="https://github.com/pranaypanakanti" target="_blank">GitHub</a>
+  <a href="https://leetcode.com/u/pranaypanakanti/" target="_blank">LeetCode</a>
+</div>
 
-    <!-- Experience Section -->
-    <section id="experience" class="py-20 container mx-auto px-6">
-        <h2 class="section-heading text-4xl font-bold text-white">Experience</h2>
-        
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="card p-8">
-                <div class="flex items-start mb-6">
-                    <div class="w-16 h-16 rounded-xl bg-blue-900/30 flex items-center justify-center mr-4">
-                        <i class="fas fa-laptop-code text-blue-400 text-2xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-white">Software Engineering Intern</h3>
-                        <p class="text-blue-300 font-medium">CodeBeat</p>
-                        <p class="text-gray-400 text-sm">May 2024 – June 2024 • Visakhapatnam, AP</p>
-                    </div>
-                </div>
-                
-                <ul class="space-y-3">
-                    <li class="flex items-start">
-                        <i class="fas fa-check text-blue-400 mt-1 mr-3"></i>
-                        <span class="text-gray-300">Built backend features and RESTful APIs using Java and Spring Boot as part of a guided, project-based engineering internship.</span>
-                    </li>
-                    <li class="flex items-start">
-                        <i class="fas fa-check text-blue-400 mt-1 mr-3"></i>
-                        <span class="text-gray-300">Implemented core business logic modules following standard backend development practices.</span>
-                    </li>
-                    <li class="flex items-start">
-                        <i class="fas fa-check text-blue-400 mt-1 mr-3"></i>
-                        <span class="text-gray-300">Collaborated in structured development workflows involving version control and code reviews.</span>
-                    </li>
-                </ul>
-            </div>
-            
-            <div class="card p-8">
-                <div class="flex items-start mb-6">
-                    <div class="w-16 h-16 rounded-xl bg-purple-900/30 flex items-center justify-center mr-4">
-                        <i class="fas fa-rocket text-purple-400 text-2xl"></i>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold text-white">Programmer</h3>
-                        <p class="text-purple-300 font-medium">GITAM Aero Astro Club</p>
-                        <p class="text-gray-400 text-sm">September 2025 – Present • Visakhapatnam, AP</p>
-                    </div>
-                </div>
-                
-                <ul class="space-y-3">
-                    <li class="flex items-start">
-                        <i class="fas fa-check text-purple-400 mt-1 mr-3"></i>
-                        <span class="text-gray-300"><strong>Built the entire backend system</strong> for the official club platform using Spring Boot and PostgreSQL, serving 20,000+ university members.</span>
-                    </li>
-                    <li class="flex items-start">
-                        <i class="fas fa-check text-purple-400 mt-1 mr-3"></i>
-                        <span class="text-gray-300">Designed and implemented automation and simulation tools using Java and Python for aerospace research.</span>
-                    </li>
-                    <li class="flex items-start">
-                        <i class="fas fa-check text-purple-400 mt-1 mr-3"></i>
-                        <span class="text-gray-300">Contributing to internal projects focused on control systems, telemetry, and data processing for UAV prototypes.</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="mt-12">
-            <h3 class="text-2xl font-bold text-white mb-8">Additional Roles</h3>
-            
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="card p-6">
-                    <h4 class="text-lg font-bold text-white mb-2">Technical Core Team</h4>
-                    <p class="text-blue-300 font-medium">AWS Cloud Club GITAM</p>
-                    <p class="text-gray-400 text-sm mb-4">October 2025 – Present</p>
-                    <p class="text-gray-300">Part of the core technical team promoting cloud computing and AWS services within the university community.</p>
-                </div>
-                
-                <div class="card p-6">
-                    <h4 class="text-lg font-bold text-white mb-2">Competitive Programming</h4>
-                    <p class="text-purple-300 font-medium">LeetCode & Problem Solving</p>
-                    <p class="text-gray-400 text-sm mb-4">300+ Problems Solved</p>
-                    <p class="text-gray-300">Solved 300+ LeetCode problems with a 150+ day streak. Achieved 1500+ contest rating demonstrating strong grasp of DSA.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Scroll dots (fixed right) -->
+<div class="scroll-line" id="scrollDots">
+  <div class="scroll-dot active" data-section="home"></div>
+  <div class="scroll-dot" data-section="about"></div>
+  <div class="scroll-dot" data-section="experience"></div>
+  <div class="scroll-dot" data-section="projects"></div>
+  <div class="scroll-dot" data-section="achievements"></div>
+  <div class="scroll-dot" data-section="contact"></div>
+</div>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-gray-900/50">
-        <div class="container mx-auto px-6">
-            <h2 class="section-heading text-4xl font-bold text-white">Projects</h2>
-            
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Project 1 -->
-                <div class="card overflow-hidden">
-                    <div class="p-8">
-                        <div class="flex items-center justify-between mb-4">
-                            <h3 class="text-2xl font-bold text-white">GITAM Aero Astro Club Platform</h3>
-                            <span class="px-3 py-1 bg-green-900/30 text-green-300 rounded-full text-sm font-medium">Live Production</span>
-                        </div>
-                        
-                        <p class="text-gray-300 mb-6">
-                            Complete backend system for the official club platform used across a 20,000-member university. The platform supports blogs, user profiles, recruitment applications, and admin dashboards.
-                        </p>
-                        
-                        <div class="flex flex-wrap mb-6">
-                            <span class="tag">Spring Boot</span>
-                            <span class="tag">PostgreSQL</span>
-                            <span class="tag">Supabase</span>
-                            <span class="tag">REST APIs</span>
-                            <span class="tag">RBAC</span>
-                            <span class="tag">Authentication</span>
-                            <span class="tag">System Design</span>
-                        </div>
-                        
-                        <ul class="space-y-2 mb-8">
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-blue-400 mt-1 mr-3"></i>
-                                <span class="text-gray-300">Architected and built the complete backend system from scratch, handling authentication, session management, and encrypted credential storage.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-blue-400 mt-1 mr-3"></i>
-                                <span class="text-gray-300">Engineered secure RESTful APIs supporting blogs, user profiles, recruitment applications, and admin dashboards.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-blue-400 mt-1 mr-3"></i>
-                                <span class="text-gray-300">Production system supports 100-200 concurrent users during peak recruitment periods and ongoing daily usage.</span>
-                            </li>
-                        </ul>
-                        
-                        <div class="flex space-x-4">
-                            <a href="https://gitam-aero-astro-club.vercel.app/" target="_blank" class="text-blue-400 font-medium hover:text-blue-300 flex items-center">
-                                <i class="fas fa-external-link-alt mr-2"></i> Live Demo
-                            </a>
-                            <a href="https://github.com/pranaypanakanti/GITAM-AERO-ASTRO-CLUB" target="_blank" class="text-gray-400 font-medium hover:text-gray-300 flex items-center">
-                                <i class="fab fa-github mr-2"></i> View Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 2 -->
-                <div class="card overflow-hidden">
-                    <div class="p-8">
-                        <div class="flex items-center justify-between mb-4">
-                            <h3 class="text-2xl font-bold text-white">AI-Powered Crop Yield Prediction</h3>
-                            <span class="px-3 py-1 bg-purple-900/30 text-purple-300 rounded-full text-sm font-medium">Hackathon Project</span>
-                        </div>
-                        
-                        <p class="text-gray-300 mb-6">
-                            An intelligent agricultural platform providing AI-driven crop predictions and profitability recommendations. Built for Smart India Hackathon 2025 as a 24-hour team project.
-                        </p>
-                        
-                        <div class="flex flex-wrap mb-6">
-                            <span class="tag">Spring Boot</span>
-                            <span class="tag">FastAPI</span>
-                            <span class="tag">MySQL</span>
-                            <span class="tag">Scikit-learn</span>
-                            <span class="tag">React</span>
-                            <span class="tag">ML Integration</span>
-                            <span class="tag">System Integration</span>
-                        </div>
-                        
-                        <ul class="space-y-2 mb-8">
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-purple-400 mt-1 mr-3"></i>
-                                <span class="text-gray-300">Built backend services in Java and Spring Boot to process agricultural and geospatial data inputs.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-purple-400 mt-1 mr-3"></i>
-                                <span class="text-gray-300">Integrated a Python FastAPI-based ML service for real-time crop yield and profitability predictions.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-purple-400 mt-1 mr-3"></i>
-                                <span class="text-gray-300">Structured relational schemas and optimized queries to support multi-dimensional prediction outputs.</span>
-                            </li>
-                        </ul>
-                        
-                        <div class="flex space-x-4">
-                            <a href="https://www.linkedin.com/posts/pranay-panakanti_sih2025-smartindiahackathon-agritech-activity-7376657956899074048-cx_w?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEcIfMEBIlq3KCrr2ZLDCaEXC57Hp_hjcUc" target="_blank" class="text-purple-400 font-medium hover:text-purple-300 flex items-center">
-                                <i class="fas fa-external-link-alt mr-2"></i> Demo
-                            </a>
-                            <a href="https://github.com/pranaypanakanti/Al-Powered-Crop-Yield-Prediction-and-Optimization" target="_blank" class="text-gray-400 font-medium hover:text-gray-300 flex items-center">
-                                <i class="fab fa-github mr-2"></i> View Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Hero -->
+<section id="home">
+  <div style="max-width:1200px;margin:0 auto;padding:8rem 3rem 4rem;">
+    <div class="hero-label">Available for Summer 2025 Internship</div>
+    <h1 class="hero-name">
+      <span class="line1">Pranay</span>
+      <span class="line2">Panakanti</span>
+    </h1>
+    <p class="hero-tagline">
+      Backend engineer specializing in <span class="hl">Java & Spring Boot</span> — building production systems that serve real users at scale. Currently 3rd year CS @ GITAM.
+    </p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">20K<span>+</span></div>
+        <div class="stat-label">Users Served</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">50<span>+</span></div>
+        <div class="stat-label">APIs Shipped</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">375<span>+</span></div>
+        <div class="stat-label">LeetCode Solved</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">8.9</div>
+        <div class="stat-label">GPA / 10</div>
+      </div>
+    </div>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-filled">View Work</a>
+      <a href="#contact" class="btn-outline">Get In Touch</a>
+    </div>
+  </div>
+</section>
 
-    <!-- Certifications & Resume Section -->
-    <section id="resume" class="py-20 container mx-auto px-6">
-        <h2 class="section-heading text-4xl font-bold text-white">Certifications & Resume</h2>
-        
-        <div class="grid md:grid-cols-2 gap-8">
-            <div>
-                <div class="card p-8 mb-8">
-                    <h3 class="text-2xl font-bold text-white mb-6">Certifications</h3>
-                    
-                    <div class="space-y-6">
-                        <div class="flex items-start">
-                            <div class="w-10 h-10 rounded-lg bg-blue-900/30 flex items-center justify-center mr-4 mt-1">
-                                <i class="fas fa-award text-blue-400"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-lg font-bold text-white">Deloitte Australia - Technology Job Simulation</h4>
-                                <p class="text-gray-400">Completed technology job simulation focusing on real-world consulting scenarios.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="w-10 h-10 rounded-lg bg-purple-900/30 flex items-center justify-center mr-4 mt-1">
-                                <i class="fas fa-robot text-purple-400"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-lg font-bold text-white">OCI AI Foundations</h4>
-                                <p class="text-gray-400">Oracle Cloud Infrastructure AI services and artificial intelligence principles.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="w-10 h-10 rounded-lg bg-green-900/30 flex items-center justify-center mr-4 mt-1">
-                                <i class="fas fa-google text-green-400"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-lg font-bold text-white">Build Real World AI Applications with Gemini and Imagen</h4>
-                                <p class="text-gray-400">Google Skill Badge for building AI applications with Gemini and Imagen.</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <div class="w-10 h-10 rounded-lg bg-red-900/30 flex items-center justify-center mr-4 mt-1">
-                                <i class="fas fa-network-wired text-red-400"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-lg font-bold text-white">Networking Basics</h4>
-                                <p class="text-gray-400">Cisco Networking Academy foundational networking course.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div>
-                <div class="card p-8 text-center h-full flex flex-col justify-center">
-                    <div class="mb-6">
-                        <div class="w-20 h-20 rounded-full bg-blue-900/30 flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-file-pdf text-blue-400 text-3xl"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-2">Download Resume</h3>
-                        <p class="text-gray-300 mb-6">Get my complete professional profile with detailed experience, skills, and projects.</p>
-                    </div>
-                    
-                    <div class="space-y-4">
-                        <a href="https://drive.google.com/file/d/1lRFd75Ei5lSnFoNsG2fSl1GJHLASQveU/view?usp=sharing" target="_blank" class="btn-primary w-full">
-                            <i class="fas fa-download mr-2"></i> Download PDF Resume
-                        </a>
-                        
-                        <p class="text-gray-400 text-sm">You can also view my resume directly on <a href="https://www.linkedin.com/in/pranay-panakanti/" target="_blank" class="text-blue-400 hover:underline">LinkedIn</a></p>
-                    </div>
-                </div>
-            </div>
+<!-- About -->
+<section id="about">
+  <div class="section-wrap">
+    <div class="section-label">About</div>
+    <h2 class="section-title">Building the backend<br>layer of the internet.</h2>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>I'm a Computer Science undergraduate at GITAM University with a focus on backend engineering. I started building real production systems in my 2nd year and haven't stopped — my work now powers the platform used by every student at my university.</p>
+        <p>My core stack is <strong>Java and Spring Boot</strong>, with hands-on experience deploying containerized services on cloud infrastructure. I care about system design, clean API contracts, and code that's maintainable by the next person.</p>
+        <p>I'm currently leading backend development at AWS Cloud Club and maintaining an active LeetCode practice routine — 375+ problems solved, contest rating 1580.</p>
+        <div class="about-facts">
+          <div class="fact-item">
+            <div class="fact-key">University</div>
+            <div class="fact-val">GITAM, Vizag</div>
+          </div>
+          <div class="fact-item">
+            <div class="fact-key">Degree</div>
+            <div class="fact-val">B.Tech CSE</div>
+          </div>
+          <div class="fact-item">
+            <div class="fact-key">Year</div>
+            <div class="fact-val">3rd Year (2023–27)</div>
+          </div>
+          <div class="fact-item">
+            <div class="fact-key">Focus</div>
+            <div class="fact-val">Backend Engineering</div>
+          </div>
         </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-900/50">
-        <div class="container mx-auto px-6">
-            <h2 class="section-heading text-4xl font-bold text-white text-center">Get In Touch</h2>
-            <p class="text-xl text-gray-300 text-center max-w-2xl mx-auto mb-12">
-                I'm always open to discussing new opportunities, collaborations, or just chatting about technology and software engineering.
-            </p>
-            
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="card p-8">
-                    <h3 class="text-2xl font-bold text-white mb-6">Send me a message</h3>
-                    
-                    <form id="contact-form" class="space-y-6">
-                        <div>
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" required>
-                        </div>
-                        
-                        <div>
-                            <label for="email">Your Email</label>
-                            <input type="email" id="email" required>
-                        </div>
-                        
-                        <div>
-                            <label for="message">Your Message</label>
-                            <textarea id="message" rows="5" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn-primary w-full">
-                            <i class="fas fa-paper-plane mr-2"></i> Send Message
-                        </button>
-                    </form>
-                </div>
-                
-                <div>
-                    <div class="card p-8 mb-8">
-                        <h3 class="text-2xl font-bold text-white mb-6">Contact Information</h3>
-                        
-                        <div class="space-y-6">
-                            <div class="flex items-start">
-                                <div class="w-12 h-12 rounded-lg bg-blue-900/30 flex items-center justify-center mr-4">
-                                    <i class="fas fa-envelope text-blue-400"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-bold text-white">Email</h4>
-                                    <a href="mailto:panakantipranay@gmail.com" class="text-gray-300 hover:text-blue-400">panakantipranay@gmail.com</a>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="w-12 h-12 rounded-lg bg-purple-900/30 flex items-center justify-center mr-4">
-                                    <i class="fas fa-phone text-purple-400"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-bold text-white">Phone</h4>
-                                    <a href="tel:+917331134917" class="text-gray-300 hover:text-purple-400">+91 7331134917</a>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="w-12 h-12 rounded-lg bg-green-900/30 flex items-center justify-center mr-4">
-                                    <i class="fas fa-map-marker-alt text-green-400"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-lg font-bold text-white">Location</h4>
-                                    <p class="text-gray-300">Hyderabad, India</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="flex justify-center space-x-4">
-                        <a href="https://www.linkedin.com/in/pranay-panakanti/" target="_blank" class="icon-link">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://github.com/pranaypanakanti" target="_blank" class="icon-link">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://leetcode.com/u/pranaypanakanti/" target="_blank" class="icon-link">
-                            <i class="fas fa-terminal"></i>
-                        </a>
-                        <a href="mailto:panakantipranay@gmail.com" class="icon-link">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <div class="about-skills-list reveal">
+        <div class="skill-group">
+          <div class="skill-group-label">Languages</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">C</span>
+          </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-12 border-t border-gray-800">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <h2 class="text-2xl font-bold text-white">Pranay<span class="text-gradient">.</span></h2>
-                    <p class="text-gray-400 mt-2">Software Engineer with Strong Backend Focus</p>
-                </div>
-                
-                <div class="flex space-x-6 mb-6 md:mb-0">
-                    <a href="#home" class="text-gray-400 hover:text-white">Home</a>
-                    <a href="#about" class="text-gray-400 hover:text-white">About</a>
-                    <a href="#projects" class="text-gray-400 hover:text-white">Projects</a>
-                    <a href="#contact" class="text-gray-400 hover:text-white">Contact</a>
-                </div>
-                
-                <div>
-                    <p class="text-gray-400">&copy; 2025 Pranay Panakanti. All rights reserved.</p>
-                </div>
-            </div>
+        <div class="skill-group">
+          <div class="skill-group-label">Backend & Frameworks</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Spring Boot</span>
+            <span class="skill-tag">Spring Security</span>
+            <span class="skill-tag">JWT</span>
+            <span class="skill-tag">REST APIs</span>
+            <span class="skill-tag">JPA/Hibernate</span>
+            <span class="skill-tag">JUnit</span>
+            <span class="skill-tag">RBAC</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">Spring AI</span>
+          </div>
         </div>
-    </footer>
+        <div class="skill-group">
+          <div class="skill-group-label">Cloud & DevOps</div>
+          <div class="skill-tags">
+            <span class="skill-tag">AWS (EC2, S3, RDS, Lambda)</span>
+            <span class="skill-tag">GitHub Actions</span>
+            <span class="skill-tag">CI/CD</span>
+            <span class="skill-tag">Linux</span>
+            <span class="skill-tag">Git</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-label">Databases</div>
+          <div class="skill-tags">
+            <span class="skill-tag">PostgreSQL</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">MongoDB</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-label">Applied AI</div>
+          <div class="skill-tags">
+            <span class="skill-tag">FastAPI Integration</span>
+            <span class="skill-tag">LLM APIs</span>
+            <span class="skill-tag">Gemini API</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script>
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        if (mobileMenuButton) {
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-        }
-        
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-        
-        // Contact form submission
-        const contactForm = document.getElementById('contact-form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const message = document.getElementById('message').value;
-                
-                // Create mailto link
-                const subject = `Portfolio Contact from ${name}`;
-                const body = `Name: ${name}\nEmail: ${email}\nMessage: ${message}\n`;
-                const mailtoLink = `mailto:panakantipranay@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-                
-                // Open email client
-                window.open(mailtoLink, '_blank');
-                
-                // Reset form
-                contactForm.reset();
-                
-                // Show success message
-                alert('Thank you for your message! Your email client should open with a pre-filled message. If not, please email me directly at panakantipranay@gmail.com');
-            });
-        }
-        
-        // Animate skill bars on scroll
-        function animateSkillBars() {
-            const skillBars = document.querySelectorAll('.skill-progress');
-            skillBars.forEach(bar => {
-                const width = bar.getAttribute('data-width');
-                bar.style.width = width;
-            });
-        }
-        
-        // Intersection Observer for animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    if (entry.target.id === 'skills' || entry.target.id === 'about') {
-                        animateSkillBars();
-                    }
-                }
-            });
-        }, { threshold: 0.2 });
-        
-        // Observe sections
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
-        
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Initialize skill bars
-        document.addEventListener('DOMContentLoaded', function() {
-            animateSkillBars();
-        });
-    </script>
+<!-- Experience -->
+<section id="experience">
+  <div class="section-wrap">
+    <div class="section-label">Experience</div>
+    <h2 class="section-title">Where I've built things.</h2>
+    <div class="exp-grid reveal">
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-period">Dec 2024 — Present</div>
+          <div class="exp-company">AWS Cloud Club</div>
+          <div class="exp-location">GITAM University, Vizag</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-role">Technical Team Lead</div>
+          <ul class="exp-bullets">
+            <li>Leading backend development of <strong>Kronos</strong>, a student productivity platform with spaced repetition, streak tracking, and Google Calendar OAuth 2.0 integration.</li>
+            <li>Architecting Spring Boot services with PostgreSQL on Supabase, Docker containerization, and CI/CD via GitHub Actions on DigitalOcean.</li>
+            <li>Conducting weekly DSA and system design sessions for 80+ students; delivered a session on Linked List patterns.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-meta">
+          <div class="exp-period">Aug 2023 — Present</div>
+          <div class="exp-company">GITAM Aero Astro Club</div>
+          <div class="exp-location">Visakhapatnam, AP</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-role">Backend Developer</div>
+          <ul class="exp-bullets">
+            <li>Architected and deployed the complete backend for the <a href="https://gitam-aero-astro-club.vercel.app/" target="_blank" style="color:var(--accent);text-decoration:none;">official club platform</a> serving 20,000+ university students.</li>
+            <li>Engineered 30+ secure RESTful APIs (Spring Boot, JWT, PostgreSQL) supporting blogs, user profiles, and admin dashboards with RBAC.</li>
+            <li>Automated recruitment workflows and email notifications, reducing administrative workload by 70%; system maintains 99.5% uptime.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects">
+  <div class="section-wrap">
+    <div class="section-label">Projects</div>
+    <h2 class="section-title">Things I've shipped.</h2>
+    <div class="projects-grid">
+
+      <!-- GAAC - Featured -->
+      <div class="project-card featured reveal">
+        <div class="project-header">
+          <span class="project-num">01</span>
+          <span class="project-badge live">● Live Production</span>
+        </div>
+        <div class="project-name">GITAM Aero Astro Club Platform</div>
+        <div class="project-desc">Complete backend system for the official club platform used by every student at GITAM University. 30+ APIs, JWT authentication, RBAC, automated recruitment workflows — all built from scratch and deployed on free-tier infrastructure.</div>
+        <div class="project-stack">
+          <span class="stack-tag">Spring Boot</span>
+          <span class="stack-tag">JWT</span>
+          <span class="stack-tag">PostgreSQL</span>
+          <span class="stack-tag">Supabase</span>
+          <span class="stack-tag">RBAC</span>
+          <span class="stack-tag">Vercel</span>
+        </div>
+        <div style="display:flex;gap:2rem;margin-bottom:1rem;font-family:var(--font-mono);font-size:0.75rem;color:var(--text2);">
+          <span><span style="color:var(--accent2)">20K+</span> users</span>
+          <span><span style="color:var(--accent2)">30+</span> APIs</span>
+          <span><span style="color:var(--accent2)">99.5%</span> uptime</span>
+          <span><span style="color:var(--accent2)">150–200</span> concurrent peak</span>
+        </div>
+        <div class="project-links">
+          <a href="https://gitam-aero-astro-club.vercel.app/" target="_blank" class="project-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+            Live Site
+          </a>
+          <a href="https://github.com/pranaypanakanti/GITAM-AERO-ASTRO-CLUB" target="_blank" class="project-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- KhetSetu -->
+      <div class="project-card reveal">
+        <div class="project-header">
+          <span class="project-num">02</span>
+          <span class="project-badge live">● Deployed</span>
+        </div>
+        <div class="project-name">KhetSetu</div>
+        <div class="project-desc">Peer-to-peer farm equipment rental platform for rural India. Haversine-based distance sorting, village autocomplete, instant booking, JWT auth, and a unified dashboard endpoint. Deployed via Docker on Render.</div>
+        <div class="project-stack">
+          <span class="stack-tag">Java 21</span>
+          <span class="stack-tag">Spring Boot</span>
+          <span class="stack-tag">JWT</span>
+          <span class="stack-tag">PostgreSQL</span>
+          <span class="stack-tag">Supabase</span>
+          <span class="stack-tag">Docker</span>
+          <span class="stack-tag">Render</span>
+          <span class="stack-tag">React/Vite</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/pranaypanakanti/KhetSetu" target="_blank" class="project-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- Kronos -->
+      <div class="project-card reveal">
+        <div class="project-header">
+          <span class="project-num">03</span>
+          <span class="project-badge wip">◌ In Development</span>
+        </div>
+        <div class="project-name">Kronos</div>
+        <div class="project-desc">Student productivity platform with spaced repetition (1-4-7 plan), Google Calendar OAuth 2.0, streak challenges, and AI summaries. Built for AWS Cloud Club GITAM as a team project.</div>
+        <div class="project-stack">
+          <span class="stack-tag">Spring Boot</span>
+          <span class="stack-tag">PostgreSQL</span>
+          <span class="stack-tag">Supabase</span>
+          <span class="stack-tag">Google OAuth</span>
+          <span class="stack-tag">Docker</span>
+          <span class="stack-tag">GitHub Actions</span>
+          <span class="stack-tag">DigitalOcean</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/pranaypanakanti/Kronos" target="_blank" class="project-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+
+      <!-- AI Crop -->
+      <div class="project-card featured reveal">
+        <div class="project-header">
+          <span class="project-num">04</span>
+          <span class="project-badge hackathon">⚡ Hackathon</span>
+        </div>
+        <div class="project-name">AI-Powered Crop Yield Prediction</div>
+        <div class="project-desc">Agricultural intelligence platform built for Smart India Hackathon 2024 in a 24-hour sprint. Spring Boot backend integrating a Python FastAPI ML service for real-time yield predictions across 50+ crop types — achieving 87% model accuracy with sub-second API response times.</div>
+        <div class="project-stack">
+          <span class="stack-tag">Spring Boot</span>
+          <span class="stack-tag">FastAPI</span>
+          <span class="stack-tag">Scikit-learn</span>
+          <span class="stack-tag">MySQL</span>
+          <span class="stack-tag">React</span>
+          <span class="stack-tag">Python</span>
+        </div>
+        <div style="display:flex;gap:2rem;margin-bottom:1rem;font-family:var(--font-mono);font-size:0.75rem;color:var(--text2);">
+          <span><span style="color:var(--accent2)">87%</span> model accuracy</span>
+          <span><span style="color:var(--accent2)">50+</span> crop types</span>
+          <span><span style="color:var(--accent2)">24hr</span> sprint</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/pranaypanakanti/Al-Powered-Crop-Yield-Prediction-and-Optimization" target="_blank" class="project-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/posts/pranay-panakanti_sih2025-smartindiahackathon-agritech-activity-7376657956899074048-cx_w" target="_blank" class="project-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+            Demo
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Achievements -->
+<section id="achievements">
+  <div class="section-wrap">
+    <div class="section-label">Achievements</div>
+    <h2 class="section-title">Recognition.</h2>
+    <div class="ach-grid reveal">
+      <div class="ach-card">
+        <div class="ach-icon">🏆</div>
+        <div class="ach-title">Top Performer — Meta Code Quest</div>
+        <div class="ach-org">Meta Developer Communities × GITAM</div>
+        <div class="ach-desc">Ranked #1 overall across 5 weekly DSA coding hackathons hosted on Naukri. Nov 2025 — Mar 2026.</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-icon">🥉</div>
+        <div class="ach-title">3rd Place — Shore Fest 2026</div>
+        <div class="ach-org">Shore Fest Hackathon</div>
+        <div class="ach-desc">Secured 3rd place in an 8-hour competitive hackathon. Mar 2026.</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-icon">⚡</div>
+        <div class="ach-title">LeetCode Rating 1580</div>
+        <div class="ach-org">LeetCode</div>
+        <div class="ach-desc">375+ problems solved across all difficulty levels. Consistent competitive programming practice.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Certifications -->
+<section id="certifications">
+  <div class="section-wrap">
+    <div class="section-label">Certifications</div>
+    <h2 class="section-title">Credentials.</h2>
+    <div class="cert-list reveal">
+      <div class="cert-item">
+        <div class="cert-dot inprogress"></div>
+        <div>
+          <div class="cert-name">AWS Academy Cloud Foundations</div>
+          <div class="cert-issuer">Amazon Web Services</div>
+        </div>
+        <div class="cert-date">In Progress</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-dot"></div>
+        <div>
+          <div class="cert-name">Build Real-World AI Applications with Gemini</div>
+          <div class="cert-issuer">Google — Gen AI Study Jams 2024</div>
+        </div>
+        <div class="cert-date">Nov 2024</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-dot"></div>
+        <div>
+          <div class="cert-name">Java</div>
+          <div class="cert-issuer">HackerRank</div>
+        </div>
+        <div class="cert-date">Mar 2026</div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-dot"></div>
+        <div>
+          <div class="cert-name">Network Basics</div>
+          <div class="cert-issuer">Cisco Networking Academy</div>
+        </div>
+        <div class="cert-date">Mar 2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-left reveal">
+      <div class="big-text">
+        Let's<br><span class="outline">work</span><br>together.
+      </div>
+      <p>I'm actively looking for backend engineering internships for Summer 2025. Open to full-time opportunities after graduation in 2027.</p>
+      <div class="contact-info">
+        <div class="contact-row">
+          <span class="contact-row-label">Email</span>
+          <a href="mailto:panakantipranay@gmail.com">panakantipranay@gmail.com</a>
+        </div>
+        <div class="contact-row">
+          <span class="contact-row-label">Phone</span>
+          <span>+91 73311 34917</span>
+        </div>
+        <div class="contact-row">
+          <span class="contact-row-label">Location</span>
+          <span>Visakhapatnam, India</span>
+        </div>
+      </div>
+      <div class="socials-row">
+        <a href="https://linkedin.com/in/pranay-panakanti" target="_blank" class="social-link">LinkedIn</a>
+        <a href="https://github.com/pranaypanakanti" target="_blank" class="social-link">GitHub</a>
+        <a href="https://leetcode.com/u/pranaypanakanti/" target="_blank" class="social-link">LeetCode</a>
+      </div>
+    </div>
+    <div class="reveal" style="padding-top:1rem;">
+      <div style="font-family:var(--font-mono);font-size:0.65rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:1.5rem;">Quick message</div>
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        <div>
+          <label style="font-family:var(--font-mono);font-size:0.65rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.1em;display:block;margin-bottom:0.5rem;">Name</label>
+          <input type="text" id="c-name" placeholder="Your name" style="width:100%;background:var(--surface);border:1px solid var(--border2);padding:0.9rem 1rem;color:var(--text);font-family:var(--font-body);font-size:0.9rem;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border2)'">
+        </div>
+        <div>
+          <label style="font-family:var(--font-mono);font-size:0.65rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.1em;display:block;margin-bottom:0.5rem;">Email</label>
+          <input type="email" id="c-email" placeholder="your@email.com" style="width:100%;background:var(--surface);border:1px solid var(--border2);padding:0.9rem 1rem;color:var(--text);font-family:var(--font-body);font-size:0.9rem;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border2)'">
+        </div>
+        <div>
+          <label style="font-family:var(--font-mono);font-size:0.65rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.1em;display:block;margin-bottom:0.5rem;">Message</label>
+          <textarea id="c-msg" rows="5" placeholder="What's on your mind?" style="width:100%;background:var(--surface);border:1px solid var(--border2);padding:0.9rem 1rem;color:var(--text);font-family:var(--font-body);font-size:0.9rem;outline:none;resize:vertical;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border2)'"></textarea>
+        </div>
+        <button onclick="sendMsg()" style="background:var(--accent);color:var(--bg);font-family:var(--font-mono);font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;padding:1rem;border:none;cursor:pointer;transition:background 0.2s;font-weight:500;" onmouseover="this.style.background='var(--accent2)'" onmouseout="this.style.background='var(--accent)'">Send Message →</button>
+        <div id="form-msg" style="font-family:var(--font-mono);font-size:0.72rem;color:var(--accent2);display:none;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">PP<span>.</span></div>
+  <div class="footer-copy">© 2026 Pranay Panakanti.</div>
+</footer>
+
+<script>
+// Cursor
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cursor.style.left = mx - 4 + 'px';
+  cursor.style.top = my - 4 + 'px';
+});
+
+function animRing() {
+  rx += (mx - rx) * 0.12;
+  ry += (my - ry) * 0.12;
+  ring.style.left = rx - 16 + 'px';
+  ring.style.top = ry - 16 + 'px';
+  requestAnimationFrame(animRing);
+}
+animRing();
+
+document.querySelectorAll('a, button, .skill-tag').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    ring.style.width = '48px'; ring.style.height = '48px';
+    ring.style.borderColor = 'rgba(0,212,255,0.8)';
+  });
+  el.addEventListener('mouseleave', () => {
+    ring.style.width = '32px'; ring.style.height = '32px';
+    ring.style.borderColor = 'rgba(0,212,255,0.4)';
+  });
+});
+
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+revealEls.forEach(el => revealObserver.observe(el));
+
+// Active scroll dots
+const sections = ['home','about','experience','projects','achievements','certifications','contact'];
+const dots = document.querySelectorAll('.scroll-dot');
+dots.forEach((dot, i) => {
+  dot.addEventListener('click', () => {
+    const el = document.getElementById(sections[i]);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+const sectionObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const idx = sections.indexOf(e.target.id);
+      dots.forEach(d => d.classList.remove('active'));
+      if (idx >= 0 && dots[idx]) dots[idx].classList.add('active');
+    }
+  });
+}, { threshold: 0.4 });
+sections.forEach(id => {
+  const el = document.getElementById(id);
+  if (el) sectionObserver.observe(el);
+});
+
+// Contact form
+function sendMsg() {
+  const name = document.getElementById('c-name').value.trim();
+  const email = document.getElementById('c-email').value.trim();
+  const msg = document.getElementById('c-msg').value.trim();
+  const fb = document.getElementById('form-msg');
+  if (!name || !email || !msg) {
+    fb.style.color = 'var(--accent3)';
+    fb.textContent = 'Please fill all fields.';
+    fb.style.display = 'block'; return;
+  }
+  const subject = encodeURIComponent(`Portfolio message from ${name}`);
+  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${msg}`);
+  window.open(`mailto:panakantipranay@gmail.com?subject=${subject}&body=${body}`);
+  fb.style.color = 'var(--accent2)';
+  fb.textContent = '✓ Email client opened. Alternatively reach me directly at panakantipranay@gmail.com';
+  fb.style.display = 'block';
+}
+
+// Hero entrance
+document.addEventListener('DOMContentLoaded', () => {
+  const heroEls = document.querySelectorAll('.hero-label, .hero-name, .hero-tagline, .hero-stats, .hero-actions');
+  heroEls.forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = `opacity 0.6s ease ${i * 0.1}s, transform 0.6s ease ${i * 0.1}s`;
+    setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }, 100);
+  });
+});
+</script>
 </body>
 </html>
