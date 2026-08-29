@@ -575,7 +575,7 @@ footer .built{
         </div>
         <div class="building-badge reveal reveal-d2">
             <span class="pulse-dot"></span>
-            Currently building <strong style="margin-left:.25rem">ProStriver</strong>&nbsp;— student productivity platform with 100+ active users
+            Currently building <strong style="margin-left:.25rem">ProStriver</strong>&nbsp;— student productivity platform with 220+ active users
         </div>
         <div class="hero-actions reveal reveal-d3">
             <a href="#projects" class="btn btn-primary">Explore Projects →</a>
@@ -593,14 +593,14 @@ footer .built{
     <h2 class="section-title reveal">Verifying identity<span style="color:var(--green2)">.</span></h2>
     <div class="about-grid">
         <div class="about-text reveal">
-            <p>I'm a <strong>Computer Science undergraduate at GITAM University</strong> (GPA: 8.9/10, graduating May 2027). My focus is building scalable backend architectures — from normalized database schemas to containerized microservices deploy them.</p>
+            <p>I'm a <strong>Computer Science undergraduate at Gandhi Institute of Technology and Management</strong> (CGPA: 8.98/10, graduating May 2027). My focus is building scalable backend architectures — from normalized database schemas to containerized microservices deploy them.</p>
             <p>As <strong>Vice President of AWS Cloud Club at GITAM</strong>, I lead 60+ members organizing workshops, hackathons, and certification study groups.</p>
-<p>I've shipped production backends serving 20,000+ users and platforms with 95% uptime.</p>
-            <p>When I'm not engineering systems, I'm solving DSA on LeetCode (415+ problems, Contest Rating 1645) or exploring new AWS services.</p>
+<p>I've shipped two live production systems serving <strong>1,400+ users combined</strong>, at up to <strong>99.93% uptime</strong>.</p>
+            <p>When I'm not engineering systems, I'm solving DSA on LeetCode (550+ problems, Contest Rating 1722), or directing Claude Code through Agentic AI workflows, most recently to build a personal MCP server that exposes my placement prep plan as tools an AI assistant can query directly.</p>
         </div>
         <div class="about-cards">
-            <div class="about-card reveal-scale reveal-d1"><div class="lbl">Location</div><div class="val">Visakhapatnam, India</div></div>
-            <div class="about-card reveal-scale reveal-d2"><div class="lbl">University</div><div class="val">GITAM (B.Tech CSE)</div></div>
+            <div class="about-card reveal-scale reveal-d1"><div class="lbl">Location</div><div class="val">Nalgonda, Telangana</div></div>
+            <div class="about-card reveal-scale reveal-d2"><div class="lbl">University</div><div class="val">Gandhi Institute of Technology and Management (B.Tech CSE)</div></div>
             <div class="about-card reveal-scale reveal-d3"><div class="lbl">Focus</div><div class="val">Backend & Cloud</div></div>
             <div class="about-card reveal-scale reveal-d4"><div class="val" style="color:var(--green2)">● Open to Work</div><div class="lbl">Status</div></div>
         </div>
@@ -615,18 +615,20 @@ footer .built{
     <h2 class="section-title reveal">Routing requests<span style="color:var(--cyan2)">.</span></h2>
     <div class="exp-item reveal-scale">
         <div class="exp-header">
-            <div><div class="exp-role">Software Engineer Intern</div><div class="exp-company">Landmine Soft (MSME-Recognized Startup)</div></div>
-            <span class="exp-date">Jan 2026 — Feb 2026</span>
+            <div><div class="exp-role">Software Engineer Intern</div><div class="exp-company">Landmine Soft, Remote</div></div>
+            <span class="exp-date">Apr 2026 — May 2026</span>
         </div>
         <ul>
-            <li>Developed a full-stack College Student Portal (Spring Boot 3.2, Spring Data JPA, PostgreSQL) with 11 relational entities and 30+ RESTful APIs spanning enrollment, attendance, marks, fee payments, and announcements.</li>
-            <li>Implemented JWT authentication with Spring Security, RBAC (Student/Faculty/Admin), global exception handling, and Swagger/OpenAPI docs; wrote unit tests with JUnit and deployed on Render.</li>
+            <li>Built 10+ REST APIs in Java and Spring Boot within a cross-functional team, owning each feature from requirements through code review — design, coding, testing, and debugging.</li>
+            <li>Built end-to-end authentication and authorization using Spring Security and JWT with access and refresh token flows, plus role-based access control across 3 roles.</li>
+            <li>Performed end-to-end testing and raised unit-test coverage to 87% with JUnit.</li>
+            <li>Documented every endpoint with Swagger and OpenAPI, reducing integration errors and speeding delivery.</li>
         </ul>
     </div>
     <div class="exp-item reveal-scale">
         <div class="exp-header">
             <div><div class="exp-role">Vice President</div><div class="exp-company">AWS Cloud Club, GITAM University</div></div>
-            <span class="exp-date">Oct 2025 — Present</span>
+            <span class="exp-date">Nov 2025 — Present</span>
         </div>
         <ul>
             <li>Leading a 60+ member cloud community: setting annual vision, coordinating with AWS Student Programs, and organizing workshops, hackathons, and certification study groups.</li>
@@ -658,10 +660,10 @@ footer .built{
         </div>
         <div class="project-body">
             <div class="project-top"><span class="project-name"><span class="emoji">⚡</span> ProStriver</span><div class="project-links"><a href="https://prostriver.me" target="_blank">Live ↗</a><a href="https://github.com/pranaypanakanti/ProStriver_Backend" target="_blank">GitHub ↗</a></div></div>
-            <div class="project-subtitle">Student Productivity Platform · Full-Stack · Deployed on AWS</div>
-            <p class="project-desc">Production-grade platform featuring spaced repetition, OTP auth (JWT + HTTP-only refresh tokens), lock-in challenges, and automated daily revision email digests via Brevo API. Dual-profile Spring Boot architecture: API server on AWS EC2 and background worker (5 scheduled jobs) on DigitalOcean. CI/CD auto-deploys both via GitHub Actions on every push to main.</p>
-            <div class="project-tech"><span class="tag">Java 21</span><span class="tag">Spring Boot</span><span class="tag">PostgreSQL</span><span class="tag">Docker</span><span class="tag">AWS EC2</span><span class="tag">GitHub Actions</span><span class="tag">Brevo API</span></div>
-            <div class="project-metric">100+ active users · Live in production</div>
+            <div class="project-subtitle">Student Productivity Platform · Full-Stack · Dual-Cloud on AWS + DigitalOcean</div>
+            <p class="project-desc">Production-grade platform featuring spaced repetition, OTP auth (JWT + HTTP-only refresh tokens), lock-in challenges, and automated daily revision email digests via Brevo API. One Docker image runs as a multi-module Maven build across a dual-cloud setup: an AWS EC2 API node and a DigitalOcean background worker (5 scheduled jobs), switched by Spring profiles. An asynchronous Kafka pipeline (one topic, two partitions, keyed ordering, idempotent consumers, dead-letter handling) offloads 40-50 second Gemini LLM generation off the request path, cutting client response to a 253ms acknowledgment. Redis caching cuts endpoint latency from 342ms to 90ms at a 92.5% hit ratio. Gemini is called through Spring AI with structured JSON output enforced, and a newer RAG capability indexes documents into a pgvector-backed Postgres store and retrieves relevant chunks by similarity search for grounded answers, built and validated locally so far, not yet merged into the live deployment. Claude Code wrote and validated the production test suite, directed and reviewed by me. GitHub Actions CI/CD builds, containerizes, and deploys both nodes on every push to main, monitored through Spring Boot Actuator, Micrometer, Prometheus, and Grafana at 99.93% uptime measured externally by UptimeRobot.</p>
+            <div class="project-tech"><span class="tag">Java 21</span><span class="tag">Spring Boot</span><span class="tag">Apache Kafka</span><span class="tag">Redis</span><span class="tag">PostgreSQL</span><span class="tag">MongoDB</span><span class="tag">Spring AI</span><span class="tag">RAG (pgvector)</span><span class="tag">Docker</span><span class="tag">AWS EC2</span><span class="tag">GitHub Actions</span><span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">Brevo API</span></div>
+            <div class="project-metric">220+ active users · 99.93% uptime · Live in production</div>
         </div>
     </div>
 
@@ -680,10 +682,10 @@ footer .built{
         </div>
         <div class="project-body">
             <div class="project-top"><span class="project-name"><span class="emoji">🤖</span> AI Crop Yield Prediction</span><div class="project-links"><a href="https://github.com/pranaypanakanti/Al-Powered-Crop-Yield-Prediction-and-Optimization" target="_blank">GitHub ↗</a><a href="https://www.linkedin.com/posts/pranay-panakanti_sih2025-smartindiahackathon-agritech-activity-7376657956899074048-cx_w" target="_blank">Demo ↗</a></div></div>
-            <div class="project-subtitle">Smart India Hackathon 2025 · 6-Member Team · Backend Lead</div>
-            <p class="project-desc">Architected the Spring Boot 3.5 backend: JPA entities, 4 REST endpoints, and a service layer integrating a FastAPI ML microservice via RestTemplate for real-time yield predictions across 50+ crop types. Custom JPQL autocomplete search + top-N recommendation engine ranked by predicted yield and MSP.</p>
-            <div class="project-tech"><span class="tag">Spring Boot 3.5</span><span class="tag">FastAPI</span><span class="tag">Scikit-learn</span><span class="tag">MySQL</span><span class="tag">React</span><span class="tag">RestTemplate</span></div>
-            <div class="project-metric">87% accuracy · Sub-second response · 24-hour sprint</div>
+            <div class="project-subtitle">Smart India Hackathon 2025 · 6-Member Team · System Architect</div>
+            <p class="project-desc">Led a 6-member team as system architect. Architected the Spring Boot backend: JPA entities, REST endpoints, and a service layer integrating a FastAPI ML microservice via RestTemplate for real-time yield predictions across 50+ crop types. MySQL held reference data only (states, crops), not ML outputs. My contributions were planning, architecture, the Spring Boot backend, the ML integration, and pitching.</p>
+            <div class="project-tech"><span class="tag">Spring Boot</span><span class="tag">FastAPI</span><span class="tag">MySQL</span><span class="tag">RestTemplate</span></div>
+            <div class="project-metric">89% accuracy · Sub-second response · System Architect</div>
         </div>
     </div>
 
@@ -696,10 +698,10 @@ footer .built{
         </div>
         <div class="project-body">
             <div class="project-top"><span class="project-name"><span class="emoji">🚀</span> GITAM Aero Astro Club</span><div class="project-links"><a href="https://gitam-aero-astro-club.vercel.app/" target="_blank">Live ↗</a><a href="https://github.com/pranaypanakanti/GITAM-AERO-ASTRO-CLUB" target="_blank">GitHub ↗</a></div></div>
-            <div class="project-subtitle">Official University Club Platform · Backend · 20,000+ Students</div>
-            <p class="project-desc">Complete backend for the official university club platform. 30+ secure RESTful APIs with JWT auth, RBAC, and admin dashboards. Automated recruitment workflows and email notifications, reducing administrative workload by 70%.</p>
-            <div class="project-tech"><span class="tag">Spring Boot</span><span class="tag">JWT</span><span class="tag">PostgreSQL</span><span class="tag">Spring Security</span><span class="tag">RBAC</span></div>
-            <div class="project-metric">20,000+ students served · 99.5% uptime</div>
+            <div class="project-subtitle">Official University Club Platform · Full-Stack · 1,200+ Students</div>
+            <p class="project-desc">Architected and deployed the Spring Boot backend for the official club platform, serving 1,200+ registered students with 40+ secure REST APIs, JWT authentication, role-based access control, and a real-time admin dashboard. Automated recruitment workflows and email alerts, cutting manual admin effort by 70% while sustaining 99.78% uptime. Later directed Claude Code through an Agentic AI workflow to independently rebuild the entire frontend as a production Next.js and React app, reviewing and validating every generated component.</p>
+            <div class="project-tech"><span class="tag">Spring Boot</span><span class="tag">Spring Security</span><span class="tag">JWT</span><span class="tag">PostgreSQL</span><span class="tag">RBAC</span><span class="tag">Next.js</span><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Tailwind CSS</span></div>
+            <div class="project-metric">1,200+ students served · 99.78% uptime · Full-stack</div>
         </div>
     </div>
 
@@ -723,6 +725,17 @@ footer .built{
             <div class="project-metric">20+ API endpoints · Geo-location search · Trust scoring</div>
         </div>
     </div>
+
+    <!-- MCP Server -->
+    <div class="project-card reveal-scale">
+        <div class="project-body">
+            <div class="project-top"><span class="project-name"><span class="emoji">🔌</span> Personal MCP Server</span></div>
+            <div class="project-subtitle">Personal AI Tooling · MCP Server · Spring AI</div>
+            <p class="project-desc">A personal tool that exposes my placement prep plan, notes, and application tracker through the Model Context Protocol (MCP), letting an AI assistant call tools directly to answer questions about my prep status. Built entirely hands-on using Spring AI's MCP server support, the same Java and Spring Boot toolchain behind ProStriver's Gemini integration and RAG work. Currently local-only, no public repo yet.</p>
+            <div class="project-tech"><span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">Spring AI</span><span class="tag">MCP (Model Context Protocol)</span></div>
+            <div class="project-metric">Built with Spring AI · Local &amp; personal</div>
+        </div>
+    </div>
 </section>
 
 <div class="section-divider"></div>
@@ -732,12 +745,13 @@ footer .built{
     <div class="layer-marker reveal"><span class="pipe pipe-amber">04</span><span class="arrow">→</span><span class="pipe pipe-amber">Repository Layer</span></div>
     <h2 class="section-title reveal">Querying the stack<span style="color:var(--amber2)">.</span></h2>
     <div class="skills-grid">
-        <div class="skill-group reveal-scale"><div class="skill-group-title">💻 Languages</div><div class="skill-tags"><span class="skill-tag">Java</span><span class="skill-tag">Python</span><span class="skill-tag">JavaScript</span><span class="skill-tag">SQL</span></div></div>
+        <div class="skill-group reveal-scale"><div class="skill-group-title">💻 Languages</div><div class="skill-tags"><span class="skill-tag">Java</span><span class="skill-tag">Python (Basic)</span><span class="skill-tag">JavaScript</span><span class="skill-tag">SQL</span></div></div>
         <div class="skill-group reveal-scale"><div class="skill-group-title">⚙️ Backend & Frameworks</div><div class="skill-tags"><span class="skill-tag">Spring Boot</span><span class="skill-tag">Spring Security</span><span class="skill-tag">REST API</span><span class="skill-tag">JPA/Hibernate</span><span class="skill-tag">JUnit</span><span class="skill-tag">Mockito</span><span class="skill-tag">Maven</span><span class="skill-tag">Docker</span></div></div>
-        <div class="skill-group reveal-scale"><div class="skill-group-title">☁️ Cloud & DevOps</div><div class="skill-tags"><span class="skill-tag">AWS EC2</span><span class="skill-tag">AWS S3</span><span class="skill-tag">AWS ECS</span><span class="skill-tag">AWS Lambda</span><span class="skill-tag">AWS IAM</span><span class="skill-tag">GitHub Actions</span><span class="skill-tag">CI/CD</span><span class="skill-tag">Linux</span></div></div>
+        <div class="skill-group reveal-scale"><div class="skill-group-title">🎨 Front-End</div><div class="skill-tags"><span class="skill-tag">HTML</span><span class="skill-tag">CSS</span><span class="skill-tag">JavaScript</span><span class="skill-tag">React</span></div></div>
+        <div class="skill-group reveal-scale"><div class="skill-group-title">☁️ Cloud & DevOps</div><div class="skill-tags"><span class="skill-tag">AWS EC2</span><span class="skill-tag">AWS S3</span><span class="skill-tag">AWS Lambda</span><span class="skill-tag">AWS IAM</span><span class="skill-tag">GitHub Actions</span><span class="skill-tag">CI/CD</span><span class="skill-tag">Linux</span></div></div>
         <div class="skill-group reveal-scale"><div class="skill-group-title">🗃️ Databases</div><div class="skill-tags"><span class="skill-tag">PostgreSQL</span><span class="skill-tag">MySQL</span><span class="skill-tag">MongoDB</span></div></div>
         <div class="skill-group reveal-scale"><div class="skill-group-title">🧠 Core Concepts</div><div class="skill-tags"><span class="skill-tag">DSA</span><span class="skill-tag">OOP</span><span class="skill-tag">Microservices</span><span class="skill-tag">RBAC</span><span class="skill-tag">System Design</span><span class="skill-tag">Agile</span></div></div>
-        <div class="skill-group reveal-scale"><div class="skill-group-title">🤖 Applied AI</div><div class="skill-tags"><span class="skill-tag">Spring AI</span><span class="skill-tag">FastAPI</span><span class="skill-tag">LLM APIs</span></div></div>
+        <div class="skill-group reveal-scale"><div class="skill-group-title">🤖 Applied AI &amp; Agentic</div><div class="skill-tags"><span class="skill-tag">Spring AI</span><span class="skill-tag">Claude Code</span><span class="skill-tag">RAG (pgvector)</span><span class="skill-tag">MCP Servers</span><span class="skill-tag">Structured LLM Output</span><span class="skill-tag">FastAPI</span></div></div>
     </div>
     <!-- GitHub & LeetCode Stats -->
     <div class="stats-section">
@@ -761,7 +775,7 @@ footer .built{
     <h2 class="section-title reveal">Returning results<span style="color:var(--green2)">.</span></h2>
     <div class="ach-grid">
         <a href="https://www.linkedin.com/posts/pranay-panakanti_metacodequest-dsa-competitiveprogramming-activity-7446952949916000257-nsaD" target="_blank" class="ach-card reveal-scale"><div class="ach-icon">🏆</div><div><div class="ach-title">Top Performer — Meta Code Quest</div><div class="ach-desc">Ranked #1 overall across 5 weekly DSA hackathons by Meta Developer Communities, GITAM.</div></div></a>
-        <a href="https://leetcode.com/u/GV2023005096/" target="_blank" class="ach-card reveal-scale"><div class="ach-icon">💡</div><div><div class="ach-title">Competitive Programming</div><div class="ach-desc">LeetCode: 415+ problems, Contest Rating 1645, 100 Days Badge, 24 contests attended.</div></div></a>
+        <a href="https://leetcode.com/u/GV2023005096/" target="_blank" class="ach-card reveal-scale"><div class="ach-icon">💡</div><div><div class="ach-title">Competitive Programming</div><div class="ach-desc">LeetCode: 550+ problems solved, Contest Rating 1722.</div></div></a>
         <a href="https://www.skills.google/public_profiles/3e02b666-c13a-4465-a9f9-6eeb377342b5" target="_blank" class="ach-card reveal-scale"><div class="ach-icon">☁️</div><div><div class="ach-title">Google Cloud Study Jams — Gold League</div><div class="ach-desc">52 skill badges · 48,985 XP across Compute Engine, BigQuery, and Generative AI.</div></div></a>
         <div class="ach-card reveal-scale"><div class="ach-icon">🥉</div><div><div class="ach-title">3rd Place — Shore Fest 2026 Hackathon</div><div class="ach-desc">8-hour competitive hackathon at GITAM University.</div></div></div>
     </div>
